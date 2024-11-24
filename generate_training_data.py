@@ -212,26 +212,7 @@ def generate_function_call_message(functions: list, questions_dict: dict[str: li
             previous_function = function
     return messages
 
-
-if __name__ == "__main__":
-    
-    import argparse
-    import json
-    
-    # read arguments
-    parser = argparse.ArgumentParser(description='Generate training data for function calling')
-    parser.add_argument('--prompt_insertion', action='store_true', help='Insert prompt for each function')
-    parser.add_argument('--no_prompt_insertion', action='store_false', dest='prompt_insertion', help='Do not insert prompt for each function')
-    parser.set_defaults(prompt_insertion=True)
-    parser.add_argument('--output_file', type=str, default='car_finetuning', help='Output file path')
-    
-    args = parser.parse_args()
-    prompt_insertion = args.prompt_insertion
-    
-    output_file = args.output_file
-    output_file = f"./data/{output_file}_{prompt_insertion}"
-    
-    functions = [
+functions = [
     {
         "name": "adjust_temperature",
         "description": "Adjust the temperature in a specified zone of the car.",
@@ -497,7 +478,7 @@ if __name__ == "__main__":
 
 ]
 
-    questions_dict = {
+questions_dict = {
         "adjust_temperature": [
             "Can you set the {zone} temperature to {temperature} degrees?",
             "Please adjust the {zone} zone temperature to {temperature}.",
@@ -621,6 +602,25 @@ if __name__ == "__main__":
         
     }
 
+
+if __name__ == "__main__":
+    
+    import argparse
+    import json
+    
+    # read arguments
+    parser = argparse.ArgumentParser(description='Generate training data for function calling')
+    parser.add_argument('--prompt_insertion', action='store_true', help='Insert prompt for each function')
+    parser.add_argument('--no_prompt_insertion', action='store_false', dest='prompt_insertion', help='Do not insert prompt for each function')
+    parser.set_defaults(prompt_insertion=True)
+    parser.add_argument('--output_file', type=str, default='car_finetuning', help='Output file path')
+    
+    args = parser.parse_args()
+    prompt_insertion = args.prompt_insertion
+    
+    output_file = args.output_file
+    output_file = f"./data/{output_file}_{prompt_insertion}"
+    
 
     # Generate messages
     messages = generate_function_call_message(functions, questions_dict, prompt_insertion=prompt_insertion)
