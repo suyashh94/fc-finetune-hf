@@ -15,7 +15,7 @@ import os
 import argparse
 
 argparser = argparse.ArgumentParser()
-argparser.add_argument("--data_path", type=str, default="./data/car_finetuning_False.npy")
+argparser.add_argument("--data_path", type=str, default="./data/car_finetuning_gpt_False.npy")
 argparser.add_argument("--save_adapter_path", type=str, default="./phi-2-adapter")
 argparser.add_argument("--base_model", type=str, default="microsoft/phi-2")
 
@@ -150,7 +150,7 @@ max_seq_length = 2048
 batch_size = 2 
 gradient_accum_steps = 1 
 epochs = 1 
-eval_steps = 50 
+eval_steps = 2500 
 save_steps = eval_steps * 2 
 logging_steps = 50 
 lr = 2e-5   
@@ -236,6 +236,6 @@ print("Model output: ", tokenizer.decode(outputs[0]))
 
 ############## SAVE MODEL ##############
 model_save_path = f"./phi-2-adapter"
-model.save_pretrained(model_save_path)
+model.save_pretrained(model_save_path,save_embedding_layers = True)
 tokenizer.save_pretrained(model_save_path)
                          

@@ -8,6 +8,7 @@ from faker import Faker
 from datetime import datetime, timedelta
 import random
 import json
+from config import functions
 
 def get_randon_question(function_name:str, questions_dict: dict[str: list[str]]) ->str:
     question_list = questions_dict.get(function_name)
@@ -249,292 +250,7 @@ def generate_function_call_message(functions: list, questions_dict: dict[str: li
             previous_function = function
     return messages
 
-functions = [
-    {
-        "name": "adjust_temperature",
-        "description": "Adjust the temperature in a specified zone of the car.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "zone": {
-                    "type": "string",
-                    "enum": ["front", "rear", "all"],
-                    "description": "The zone where the temperature will be adjusted.",
-                    "default": "all"
-                },
-                "temperature": {
-                    "type": "number",
-                    "description": "The target temperature for the specified zone in degrees Celsius.",
-                    "lower_bound": 1,
-                    "upper_bound": 80
-                }
-            },
-            "required": ["temperature"],
-            "optional": ["zone"]
-        }
-    },
-    {
-        "name": "adjust_seat",
-        "description": "Adjust a seat's position in the car.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "seat_type": {
-                    "type": "string",
-                    "enum": ["driver", "passenger"],
-                    "description": "The type of seat to adjust.",
-                    "default": "driver"
-                },
-                "position": {
-                    "type": "string",
-                    "description": "The desired position of the seat (e.g., 'forward', 'backward', 'up', 'down').",
-                    "enum": ["forward", "backward", "up", "down"]
-                },
-            },
-            "required": ["position"],
-            "optional": ["seat_type"]
-        }
-    },
-    {
-        "name": "control_window",
-        "description": "Control the car window's position.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "window_position": {
-                    "type": "string",
-                    "description": "The desired position of the window (e.g., 'up', 'down').",
-                    "enum": ["up", "down"]
-                },
-                "window_location": {
-                    "type": "string",
-                    "description": "The location of the window (e.g., 'driver', 'passenger', 'rear_right', 'rear_left').",
-                    "default": "driver",
-                    "enum": ["driver", "passenger", "rear_right", "rear_left"]
-                }
-            },
-            "required": ["window_position"],
-            "optional": ["window_location"]
-        }
-    },
-    {
-        "name": "adjust_wiper_speed",
-        "description": "Activate the windshield wipers.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "speed": {
-                    "type": "integer",
-                    "description": "The speed of the wipers (e.g., 1 for low, 2 for medium, 3 for high).",
-                    "enum": [1, 2, 3]
-                }
-            },
-            "required": [
-                "speed"
-            ]
-        }
-    },
-    {
-        "name": "activate_defroster",
-        "description": "Activate the defroster for windows and windshield.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "defroster_zone": {
-                    "type": "string",
-                    "description": "The zone to defrost (e.g., 'front', 'rear', 'all').",
-                    "default": "all",
-                    "enum": ["front", "rear", "all"]
-                },
-                "duration_minutes": {
-                    "type": "integer",
-                    "description": "Duration in minutes for which the defroster should be active.",
-                    "default": 10,
-                    "lower_bound": 1,
-                    "upper_bound": 30
-                }
-            },
-            "required": [],
-            "optional": [
-                "duration_minutes", "defroster_zone"
-            ]
-        }
-    },
-    {
-        "name": "start_engine",
-        "description": "Start the car's engine remotely.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "method": {
-                    "type": "string",
-                    "description": "The method to start the engine (e.g., 'remote', 'keyless', 'keyed').",
-                    "default": "keyless",
-                    "enum": ["remote", "keyless", "keyed"]
-                }
-            },
-            "optional": [
-                "method"
-            ]
-        }
-    },
-    {
-        "name": "lock_doors",
-        "description": "Lock or unlock the car doors.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "lock": {
-                    "type": "string",
-                    "description": "Set to true to lock the doors, false to unlock.",
-                    "default": "lock",
-                    "enum": ["lock", "unlock"]
-                }
-            },
-            "required": [
-                "lock"
-            ]
-        }
-    },
-    {
-        "name": "play_music",
-        "description": "Control the music player in the car.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "track": {
-                    "type": "string",
-                    "description": "The track name to play.",
-                    "default": "random"
-                },
-                "volume": {
-                    "type": "integer",
-                    "description": "Volume level from 1 (low) to 10 (high).",
-                    "default": 5,
-                    "lower_bound": 1,
-                    "upper_bound": 10
-                }
-            },
-            "required": [],
-            "optional": [
-                "volume","track"
-            ]
-        }
-    },
-    {
-        "name": "toggle_headlights",
-        "description": "Turn the headlights on or off.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "state": {
-                    "type": "string",
-                    "description": "Set to true to turn the headlights on, false to turn them off.",
-                    "enum": ["on", "off"]
-                }
-            },
-            "required": [
-                "state"
-            ]
-        }
-    },
-    {
-        "name": "set_navigation_destination",
-        "description": "Set a destination in the car's navigation system.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "destination": {
-                    "type": "string",
-                    "description": "The address or location to navigate to."
-                }
-            },
-            "required": [
-                "destination"
-            ]
-        }
-    },
-    {
-        "name": "control_ambient_lighting",
-        "description": "Adjust the color and intensity of the interior ambient lighting.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "color": {
-                    "type": "string",
-                    "description": "The color of the ambient lighting.",
-                    "enum":["warm", "red","blue","dark","white"]
-                },
-                "intensity": {
-                    "type": "integer",
-                    "description": "The intensity level of the lighting, from 1 (low) to 10 (high).",
-                    "default": 5,
-                    "lower_bound": 1,
-                    "upper_bound": 10
-                }
-            },
-            "required": [
-                "color"
-            ],
-            "optional": [
-                "intensity"
-            ]
-        }
-    },
-    {
-        "name": "set_cruise_control",
-        "description": "Activate and set the speed for cruise control.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "speed": {
-                    "type": "integer",
-                    "description": "The cruise control speed in km/h.",
-                    "lower_bound": 10,
-                    "upper_bound": 150
-                }
-            },
-            "required": [
-                "speed"
-            ]
-        }
-    },
-    {
-        "name": "check_battery_health",
-        "description": "Provide the current status and health of the car's battery.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "include_history": {
-                    "type": "boolean",
-                    "description": "Whether to include historical health data.",
-                    "default": False
-                }
-            },
-            "optional": [
-                "include_history"
-            ]
-        }
-    },
-    {
-        "name": "toggle_sport_mode",
-        "description": "Toggle the car's sport mode setting.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string",
-                    "description": "Set to true to enable sport mode, false to disable.",
-                    "enum": ["activate", "deactivate"]
-                }
-            },
-            "required": [
-                "action"
-            ]
-        }
-    }
 
-]
 
 questions_dict = {
         "adjust_temperature": [
@@ -683,30 +399,21 @@ if __name__ == "__main__":
 
     # Generate messages
     messages = generate_function_call_message(functions, questions_dict, prompt_insertion=prompt_insertion, read_data_from_file=True, data_file="./data/function_calls_with_commands.json")
+    # shuffle the messages
+    random.shuffle(messages)
+    
+    ## split the data into train and test
+    split = int(len(messages) * 0.8)
+    train_data = messages[:split]
+    test_data = messages[split:]
+    
 
     # save the messages
-    np.save(f"{output_file}.npy", messages)
+    np.save(f"{output_file}-train.npy", train_data)
 
-    
-    with open(f"{output_file}.json", "w") as file:
-        json.dump(messages, file, indent=4)
+    with open(f"{output_file}-train.json", "w") as file:
+        json.dump(train_data, file, indent=4)
         
-    messages = np.load(f'{output_file}.npy', allow_pickle=True)
-
-    from collections import Counter
-
-    function_counter = Counter()
-
-    # Iterate through the records and extract function names where applicable
-    for record in messages:
-        assistant_response = record['assistant']
-        if '<functioncall>' in assistant_response:
-            # Extract the function name
-            function_name = assistant_response.split('"name": ')[1].split(',')[0].replace('"', '').strip()
-            function_counter[function_name] += 1
-        else:
-            function_counter['Error'] += 1
-
-    # Convert to a dictionary for easier use in visualization
-    function_data = dict(function_counter)
-    import pdb; pdb.set_trace()
+    np.save(f"{output_file}-test.npy", test_data)
+    with open(f"{output_file}-test.json", "w") as file:
+        json.dump(test_data, file, indent=4)
