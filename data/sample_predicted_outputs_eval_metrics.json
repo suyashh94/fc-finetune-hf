@@ -1,0 +1,744 @@
+{
+    "set_cruise_control": {
+        "total": 8,
+        "correct": 7,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 62}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 60}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": false,
+                "errors": [
+                    {
+                        "error_type": "IncorrectParameterValue",
+                        "key": "speed",
+                        "gt_value": 62,
+                        "pred_value": 60
+                    }
+                ]
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 122}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 122}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 48}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 48}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 117}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 117}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 116}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 116}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 127}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 127}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 40}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 40}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 127}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 127}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "control_window": {
+        "total": 12,
+        "correct": 11,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'side', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": false,
+                "errors": [
+                    {
+                        "error_type": "HallucinatedParameterValue",
+                        "key": "window_position",
+                        "gt_value": "down",
+                        "pred_value": "side"
+                    }
+                ]
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'driver'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'driver'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location': 'rear_right'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location':'rear_right'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location': 'rear_left'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location':'rear_left'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "start_engine": {
+        "total": 13,
+        "correct": 11,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless','type':'on'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": false,
+                "errors": [
+                    {
+                        "error_type": "HallucinatedParameter",
+                        "key": "type",
+                        "gt_value": null,
+                        "pred_value": "on"
+                    }
+                ]
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_bulb\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": false,
+                "errors": [
+                    {
+                        "error_type": "HallucinatedFunction",
+                        "key": null,
+                        "gt_value": "start_engine",
+                        "pred_value": "start_bulb"
+                    }
+                ]
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'remote'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method':'remote'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyed'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyed'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'remote'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method':'remote'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'remote'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method':'remote'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyed'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyed'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "activate_defroster": {
+        "total": 4,
+        "correct": 3,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 3, 'defroster_zone': 'all'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 3}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": false,
+                "errors": [
+                    {
+                        "error_type": "MissingParameter",
+                        "key": "defroster_zone",
+                        "gt_value": "all",
+                        "pred_value": null
+                    }
+                ]
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 6}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 6}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'defroster_zone': 'front'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'defroster_zone': 'front'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "adjust_wiper_speed": {
+        "total": 8,
+        "correct": 7,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+                "fn_match": false,
+                "errors": [
+                    {
+                        "error_type": "InvalidFunction",
+                        "key": null,
+                        "gt_value": "adjust_wiper_speed",
+                        "pred_value": "activate_defroster"
+                    }
+                ]
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "adjust_seat": {
+        "total": 12,
+        "correct": 12,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward', 'seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward','seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward', 'seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward','seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward', 'seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward','seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up', 'seat_type': 'driver'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up','seat_type': 'driver'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'forward'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'forward'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward', 'seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward','seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "lock_doors": {
+        "total": 6,
+        "correct": 6,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'lock'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'lock'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "control_ambient_lighting": {
+        "total": 6,
+        "correct": 6,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white', 'intensity': 7}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white', 'intensity': 7}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white', 'intensity': 6}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white', 'intensity': 6}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'red'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color':'red'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "play_music": {
+        "total": 4,
+        "correct": 4,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string1|'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string1|'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string3|'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string3|'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string3|'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string3|'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string2|'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string2|'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "adjust_temperature": {
+        "total": 4,
+        "correct": 4,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 3}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 3}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 25}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 25}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 59}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 59}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 66, 'zone': 'rear'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 66, 'zone':'rear'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "toggle_headlights": {
+        "total": 10,
+        "correct": 10,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "check_battery_health": {
+        "total": 8,
+        "correct": 8,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': False}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': False}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': False}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': False}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': True}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': True}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "toggle_sport_mode": {
+        "total": 3,
+        "correct": 3,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    },
+    "set_navigation_destination": {
+        "total": 4,
+        "correct": 4,
+        "samples": [
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            },
+            {
+                "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string3|'}\"} <|im_end|><|endoftext|>",
+                "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string3|'}\"} <|im_end|><|endoftext|>",
+                "fn_match": true,
+                "arg_match": true
+            }
+        ]
+    }
+}

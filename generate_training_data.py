@@ -7,7 +7,8 @@ import re
 from faker import Faker
 from datetime import datetime, timedelta
 import random
-
+import json
+from config import functions
 
 def get_randon_question(function_name:str, questions_dict: dict[str: list[str]]) ->str:
     question_list = questions_dict.get(function_name)
@@ -98,6 +99,8 @@ def get_random_value(param: str, data_type: str):
         return random.choice(['lock', 'unlock'])
     elif param == "state" or param == "enabled":
         return random.choice(["on", "off"])
+    elif param == "zone":
+        return random.choice(["front", "rear", "all"])
     elif param == "color":
         return fake.color_name()
     elif param == "tire_id":
@@ -117,7 +120,7 @@ def get_random_value(param: str, data_type: str):
     else:
         return -1
     
-def generate_function_call_message(functions: list, questions_dict: dict[str: list[str]], prompt_insertion = True) -> list:
+def generate_function_call_message(functions: list, questions_dict: dict[str: list[str]], prompt_insertion = True, read_data_from_file = False, data_file = None) -> list:
     
     # message initialization
     messages = []
@@ -155,37 +158,72 @@ def generate_function_call_message(functions: list, questions_dict: dict[str: li
         else:
             system_message = "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n"
         
-    
-        for i in range(random.randint(40,100)):
-            
-            ## BUG HERE RIGHT NOW
-            user_question = get_randon_question(name, questions_dict)
-            # import pdb; pdb.set_trace()
-            placeholders = re.findall(r'\{(.*?)\}', user_question)
-            
-            #TODO add required placeholder check else wise negative sample with incomplete info 
-            
-            
-            
-            user_message = "<|im_start|>user\n"
-            function_args = {}
-            # for param in required:
-            for param, param_details in parameters.items():
-                param_type = param_details['type']
-                if param in placeholders:
-                    function_args[param] = get_random_value(param, param_type)
-                else:
-                    function_args[param] = param_details.get('default',[])
+        if not read_data_from_file:
+            for i in range(random.randint(40,100)):
+                
+                ## BUG HERE RIGHT NOW
+                user_question = get_randon_question(name, questions_dict)
+                # import pdb; pdb.set_trace()
+                placeholders = re.findall(r'\{(.*?)\}', user_question)
+                
+                #TODO add required placeholder check else wise negative sample with incomplete info 
+                
+                
+                
+                user_message = "<|im_start|>user\n"
+                function_args = {}
+                # for param in required:
+                for param, param_details in parameters.items():
+                    param_type = param_details['type']
+                    if param in placeholders:
+                        function_args[param] = get_random_value(param, param_type)
+                    else:
+                        function_args[param] = param_details.get('default',[])
 
+                
+                
+                user_message += user_question.format(**function_args)
+                user_message += "<|im_end|>\n"
+                        
+                assistant_message = f'<|im_start|>assistant\n<functioncall> {{"name": "{name}", "arguments": "{function_args}"}} <|im_end|><|endoftext|>'
+                
+                scenario_message = {'system': system_message, 'user': user_message, 'assistant': assistant_message}
+                messages.append(scenario_message)
+        else:
+            if data_file is None:
+                raise ValueError("Data file is required to read data from file")
             
+            with open(data_file, "r") as file:
+                data = json.load(file)
             
-            user_message += user_question.format(**function_args)
-            user_message += "<|im_end|>\n"
-                     
-            assistant_message = f'<|im_start|>assistant\n<functioncall> {{"name": "{name}", "arguments": "{function_args}"}} <|im_end|><|endoftext|>'
-            
-            scenario_message = {'system': system_message, 'user': user_message, 'assistant': assistant_message}
-            messages.append(scenario_message)
+            for fn in data:
+                user_commands = data[fn]['user_commands']
+                function_calls = data[fn]['calls']
+                fn_args = data[fn]['args']
+                for i in range(len(function_calls)):
+                    for j in range(len(user_commands[i])):
+                        # import pdb; pdb.set_trace()
+                        user_message = "<|im_start|>user\n"
+                        user_command_temp = user_commands[i][j]
+                        # strip 'please' if it is present with probability 0.8 
+                        if "please" in user_command_temp and random.random() < 0.8: 
+                            user_command_temp = user_command_temp.replace("please", "")
+                        
+                        # strip "can you" if it is present
+                        if "can you " in user_command_temp:
+                            user_command_temp = user_command_temp.replace("can you", "")
+                        
+                        # strip "car" if it is present with probability 0.5
+                        if "car " in user_command_temp and random.random() < 0.5:
+                            user_command_temp = user_command_temp.replace("car", "")
+                        
+                        user_message += user_commands[i][j]
+                        user_message += "<|im_end|>\n"
+                        assistant_message = f'<|im_start|>assistant\n<functioncall> {{"name": "{fn}", "arguments": "{fn_args[0][i]}"}} <|im_end|><|endoftext|>'
+                        scenario_message = {'system': system_message, 'user': user_message, 'assistant': assistant_message}
+                        messages.append(scenario_message)
+                        
+                        
         
         # Add questions not related with the function
         if prompt_insertion:
@@ -213,291 +251,8 @@ def generate_function_call_message(functions: list, questions_dict: dict[str: li
     return messages
 
 
-if __name__ == "__main__":
-    
-    import argparse
-    import json
-    
-    # read arguments
-    parser = argparse.ArgumentParser(description='Generate training data for function calling')
-    parser.add_argument('--prompt_insertion', action='store_true', help='Insert prompt for each function')
-    parser.add_argument('--no_prompt_insertion', action='store_false', dest='prompt_insertion', help='Do not insert prompt for each function')
-    parser.set_defaults(prompt_insertion=True)
-    parser.add_argument('--output_file', type=str, default='car_finetuning', help='Output file path')
-    
-    args = parser.parse_args()
-    prompt_insertion = args.prompt_insertion
-    
-    output_file = args.output_file
-    output_file = f"./data/{output_file}_{prompt_insertion}"
-    
-    functions = [
-    {
-        "name": "adjust_temperature",
-        "description": "Adjust the temperature in a specified zone of the car.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "zone": {
-                    "type": "string",
-                    "enum": ["front", "rear", "all"],
-                    "description": "The zone where the temperature will be adjusted.",
-                    "default": "all"
-                },
-                "temperature": {
-                    "type": "number",
-                    "description": "The target temperature for the specified zone in degrees Celsius."
-                }
-            },
-            "required": ["temperature"],
-            "optional": ["zone"]
-        }
-    },
-    {
-        "name": "adjust_seat",
-        "description": "Adjust a seat's position in the car.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "seat_type": {
-                    "type": "string",
-                    "enum": ["driver", "passenger"],
-                    "description": "The type of seat to adjust.",
-                    "default": "driver"
-                },
-                "position": {
-                    "type": "string",
-                    "description": "The desired position of the seat (e.g., 'forward', 'backward', 'up', 'down')."
-                },
-            },
-            "required": ["position"],
-            "optional": ["seat_type"]
-        }
-    },
-    {
-        "name": "control_window",
-        "description": "Control the car window's position.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "window_position": {
-                    "type": "string",
-                    "description": "The desired position of the window (e.g., 'up', 'down')."
-                },
-                "window_location": {
-                    "type": "string",
-                    "description": "The location of the window (e.g., 'driver', 'passenger', 'rear_right', 'rear_left').",
-                    "default": "driver"
-                }
-            },
-            "required": ["window_position"],
-            "optional": ["window_location"]
-        }
-    },
-    {
-        "name": "adjust_wiper_speed",
-        "description": "Activate the windshield wipers.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "speed": {
-                    "type": "integer",
-                    "description": "The speed of the wipers (e.g., 1 for low, 2 for medium, 3 for high)."
-                }
-            },
-            "required": [
-                "speed"
-            ]
-        }
-    },
-    {
-        "name": "activate_defroster",
-        "description": "Activate the defroster for windows and windshield.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "defroster_zone": {
-                    "type": "string",
-                    "description": "The zone to defrost (e.g., 'front', 'rear', 'all').",
-                    "default": "all"
-                },
-                "duration_minutes": {
-                    "type": "integer",
-                    "description": "Duration in minutes for which the defroster should be active.",
-                    "default": 10
-                }
-            },
-            "required": [],
-            "optional": [
-                "duration_minutes", "defroster_zone"
-            ]
-        }
-    },
-    {
-        "name": "start_engine",
-        "description": "Start the car's engine remotely.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "method": {
-                    "type": "string",
-                    "description": "The method to start the engine (e.g., 'remote', 'keyless', 'keyed').",
-                    "default": "keyless"
-                }
-            },
-            "optional": [
-                "method"
-            ]
-        }
-    },
-    {
-        "name": "lock_doors",
-        "description": "Lock or unlock the car doors.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "lock": {
-                    "type": "string",
-                    "description": "Set to true to lock the doors, false to unlock."
-                }
-            },
-            "required": [
-                "lock"
-            ]
-        }
-    },
-    {
-        "name": "play_music",
-        "description": "Control the music player in the car.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "track": {
-                    "type": "string",
-                    "description": "The track name to play.",
-                    "default": "random"
-                },
-                "volume": {
-                    "type": "integer",
-                    "description": "Volume level from 1 (low) to 10 (high).",
-                    "default": 5
-                }
-            },
-            "required": [],
-            "optional": [
-                "volume","track"
-            ]
-        }
-    },
-    {
-        "name": "toggle_headlights",
-        "description": "Turn the headlights on or off.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "state": {
-                    "type": "string",
-                    "description": "Set to true to turn the headlights on, false to turn them off."
-                }
-            },
-            "required": [
-                "state"
-            ]
-        }
-    },
-    {
-        "name": "set_navigation_destination",
-        "description": "Set a destination in the car's navigation system.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "destination": {
-                    "type": "string",
-                    "description": "The address or location to navigate to."
-                }
-            },
-            "required": [
-                "destination"
-            ]
-        }
-    },
-    {
-        "name": "control_ambient_lighting",
-        "description": "Adjust the color and intensity of the interior ambient lighting.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "color": {
-                    "type": "string",
-                    "description": "The color of the ambient lighting."
-                },
-                "intensity": {
-                    "type": "integer",
-                    "description": "The intensity level of the lighting, from 1 (low) to 10 (high).",
-                    "default": 5
-                }
-            },
-            "required": [
-                "color"
-            ],
-            "optional": [
-                "intensity"
-            ]
-        }
-    },
-    {
-        "name": "set_cruise_control",
-        "description": "Activate and set the speed for cruise control.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "speed": {
-                    "type": "integer",
-                    "description": "The cruise control speed in km/h."
-                }
-            },
-            "required": [
-                "speed"
-            ]
-        }
-    },
-    {
-        "name": "check_battery_health",
-        "description": "Provide the current status and health of the car's battery.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "include_history": {
-                    "type": "boolean",
-                    "description": "Whether to include historical health data.",
-                    "default": False
-                }
-            },
-            "optional": [
-                "include_history"
-            ]
-        }
-    },
-    {
-        "name": "toggle_sport_mode",
-        "description": "Toggle the car's sport mode setting.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string",
-                    "description": "Set to true to enable sport mode, false to disable."
-                }
-            },
-            "required": [
-                "action"
-            ]
-        }
-    }
 
-]
-
-    questions_dict = {
+questions_dict = {
         "adjust_temperature": [
             "Can you set the {zone} temperature to {temperature} degrees?",
             "Please adjust the {zone} zone temperature to {temperature}.",
@@ -622,31 +377,43 @@ if __name__ == "__main__":
     }
 
 
+
+if __name__ == "__main__":
+    
+    import argparse
+    import json
+    
+    # read arguments
+    parser = argparse.ArgumentParser(description='Generate training data for function calling')
+    parser.add_argument('--prompt_insertion', action='store_true', help='Insert prompt for each function')
+    parser.add_argument('--no_prompt_insertion', action='store_false', dest='prompt_insertion', help='Do not insert prompt for each function')
+    parser.set_defaults(prompt_insertion=False)
+    parser.add_argument('--output_file', type=str, default='car_finetuning_gpt', help='Output file path')
+    
+    args = parser.parse_args()
+    prompt_insertion = args.prompt_insertion
+    
+    output_file = args.output_file
+    output_file = f"./data/{output_file}_{prompt_insertion}"
+    
+
     # Generate messages
-    messages = generate_function_call_message(functions, questions_dict, prompt_insertion=prompt_insertion)
+    messages = generate_function_call_message(functions, questions_dict, prompt_insertion=prompt_insertion, read_data_from_file=True, data_file="./data/function_calls_with_commands.json")
+    # shuffle the messages
+    random.shuffle(messages)
+    
+    ## split the data into train and test
+    split = int(len(messages) * 0.8)
+    train_data = messages[:split]
+    test_data = messages[split:]
+    
 
     # save the messages
-    np.save(f"{output_file}.npy", messages)
+    np.save(f"{output_file}-train.npy", train_data)
 
-    
-    with open(f"{output_file}.json", "w") as file:
-        json.dump(messages, file, indent=4)
+    with open(f"{output_file}-train.json", "w") as file:
+        json.dump(train_data, file, indent=4)
         
-    messages = np.load(f'{output_file}.npy', allow_pickle=True)
-
-    from collections import Counter
-
-    function_counter = Counter()
-
-    # Iterate through the records and extract function names where applicable
-    for record in messages:
-        assistant_response = record['assistant']
-        if '<functioncall>' in assistant_response:
-            # Extract the function name
-            function_name = assistant_response.split('"name": ')[1].split(',')[0].replace('"', '').strip()
-            function_counter[function_name] += 1
-        else:
-            function_counter['Error'] += 1
-
-    # Convert to a dictionary for easier use in visualization
-    function_data = dict(function_counter)
+    np.save(f"{output_file}-test.npy", test_data)
+    with open(f"{output_file}-test.json", "w") as file:
+        json.dump(test_data, file, indent=4)

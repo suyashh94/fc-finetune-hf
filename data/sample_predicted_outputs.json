@@ -1,0 +1,614 @@
+[
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Set cruise control to 62 miles per hour.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 62}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 60}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey there, could you lower the passenger window for me, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'side', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Start the engine using keyless method.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless','type':'on'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you please activate the defroster for 3 minutes in all zones?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 3, 'defroster_zone': 'all'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 3}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you please set the wiper speed to level 1?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you please start the engine?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_bulb\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you start the engine remotely for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'remote'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method':'remote'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, can you please adjust the passenger seat backward?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward', 'seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward','seat_type': 'passenger'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, set the cruise control to 122 km/h please.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 122}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 122}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, could you unlock the doors for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you set the ambient lighting to white with an intensity of 7, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white', 'intensity': 7}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white', 'intensity': 7}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you please activate the defroster for 6 minutes?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 6}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 6}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease play the track titled \"|string1|\".<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string1|'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string1|'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you adjust the passenger seat backward for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward', 'seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward','seat_type': 'passenger'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you start the engine for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you please play the track called string3?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string3|'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string3|'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you please set the wiper speed to 1?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Set the cruise control to 48 miles per hour.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 48}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 48}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Could you please increase the temperature by 3 degrees?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 3}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 3}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you roll down the driver side window for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'driver'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'driver'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you play the track titled |string3| for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string3|'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string3|'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you please adjust the seat to the up position? Thanks!<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, move the passenger seat backward, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward', 'seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward','seat_type': 'passenger'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Set the cruise control to 117, please.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 117}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 117}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you please set the wiper speed to 2?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey car, set the cruise control to 116 kilometers per hour.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 116}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 116}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you roll up the passenger window, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, can you please activate the front defroster?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'defroster_zone': 'front'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'defroster_zone': 'front'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, can you please turn off the headlights?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, can you please turn off the headlights?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you turn off the headlights please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you please start the engine for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey car, could you please roll the window up?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you please move the seat up?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey car, can you please adjust the seat backward?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, can you check the battery health for me? And no need to include the history, thanks.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': False}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': False}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you please turn off the headlights for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Start the engine, please.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, could you turn the headlights on for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, could you please set the temperature to 25 degrees?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 25}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 25}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, adjust the ambient lighting to white with an intensity of 6, please.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white', 'intensity': 6}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white', 'intensity': 6}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you start the engine using the key, please?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyed'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyed'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you check the battery health for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you please set the temperature to 59 degrees?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 59}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 59}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you please adjust the seat backward?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you activate the defroster for me? Thanks!<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey there, can you please set the ambient lighting to white? Thanks!<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you please turn on the headlights?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you check the battery health for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you please adjust the driver's seat to the up position?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up', 'seat_type': 'driver'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up','seat_type': 'driver'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, could you please start the engine using remote start?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'remote'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method':'remote'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you please roll the window up for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey car, can you please lock the doors?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'lock'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'lock'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you check the battery health for me, and don't worry about including the history? Thanks!<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': False}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': False}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, please unlock the doors.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you check the battery health for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you please set the wiper speed to 2?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey car, start the engine using the keyless method.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you please play the track called \"string2\"?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string2|'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"play_music\", \"arguments\": \"{'track': '|string2|'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you change the ambient lighting to blue, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you set the wiper speed to 2, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Set the cruise control to 127 kilometers per hour.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 127}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 127}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you adjust the seat to move forward?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'forward'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'forward'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you start the engine using the remote method, please?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'remote'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method':'remote'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you unlock the doors for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you please roll up the rear right window?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location': 'rear_right'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location':'rear_right'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn off the headlights.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you please roll the window up?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey car, start the engine.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, can you please deactivate the sport mode?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey there, can you set the rear zone temperature to 66 degrees, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 66, 'zone': 'rear'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 66, 'zone':'rear'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nNavigate to |string2|.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, set the navigation to |string2|, please.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you check the battery health for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey there, can you please set the navigation destination to |string2|?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string2|'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Set the cruise control to 40 miles per hour.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 40}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 40}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you please unlock the doors?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey car, can you deactivate the sport mode for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you check the battery health for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you please turn on the headlights?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you please turn the headlights on?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'on'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you turn off the headlights for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'state': 'off'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, can you roll down the passenger window?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you please unlock the doors?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"lock_doors\", \"arguments\": \"{'lock': 'unlock'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you please adjust the seat backward for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you roll up the rear left window, please?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location': 'rear_left'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up', 'window_location':'rear_left'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you set the wiper speed to level 2, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, could you please roll the window up?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey, could you adjust the seat to the up position for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you move the passenger seat backward for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward', 'seat_type': 'passenger'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward','seat_type': 'passenger'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, could you change the ambient lighting to blue, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you check the battery health and make sure to include the history?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': True}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': True}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you please set the wiper speed to level one?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 1}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, can you please deactivate the sport mode?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_sport_mode\", \"arguments\": \"{'action': 'deactivate'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Set my navigation destination to |string3|.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string3|'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_navigation_destination\", \"arguments\": \"{'destination': '|string3|'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nHey car, please change the ambient lighting to red.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'red'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color':'red'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey car, start the engine please.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease set the wiper speed to level 2.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_wiper_speed\", \"arguments\": \"{'speed': 2}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you roll the window down for me?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey, can you please roll up the window?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Hey there, can you start the engine using the keyed method, please?\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyed'}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyed'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\n\"Set the cruise control to 127 kilometers per hour.\"<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 127}\"} <|im_end|><|endoftext|>",
+        "model_response": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 127}\"} <|im_end|><|endoftext|>"
+    }
+]
