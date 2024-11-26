@@ -50,7 +50,7 @@ def convert_command(command):
     
 if __name__ == '__main__':
     # Example command input, directly copying your provided debug output
-    command = "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 14}\"} <|im_end|><|endoftext|>"
-    command = "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': True}\"} <|im_end|><|endoftext|>"
+    command = "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'temperature': 14,'zone':['front','rear']}\"} <|im_end|><|endoftext|>"
+    # command = "<|im_start|>assistant\n<functioncall> {\"name\": \"check_battery_health\", \"arguments\": \"{'include_history': True}\"} <|im_end|><|endoftext|>"
     converted_command = convert_command(command)
     print(converted_command)

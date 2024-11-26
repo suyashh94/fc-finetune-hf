@@ -61,24 +61,54 @@ class Evaluator:
 
     def compare_properties(self, gt_fn, gt_properties, pred_properties, sample_res):
         """Compares the properties of the ground truth and predicted function calls."""
+        areEqual = False
+        
         if gt_properties == pred_properties:
             return True
         else:
             for key in gt_properties:
+                # import pdb; pdb.set_trace()
                 if key not in pred_properties:
                     self.append_error_to_sample(sample_res, ErrorType.MISSING_PARAMETER, key, gt_properties[key], None)
                 elif gt_properties[key] != pred_properties[key]:
                     fn_details = next(fn for fn in functions if fn['name'] == gt_fn)
                     param_details = fn_details['parameters']['properties'][key]
-                    if 'enum' in param_details and pred_properties[key] not in param_details['enum']:
-                        self.append_error_to_sample(sample_res, ErrorType.HALLUCINATED_PARAMETER_VALUE, key, gt_properties[key], pred_properties[key])
+                    param_type = param_details['type']
+                    if 'array' not in param_type:
+                        if 'enum' in param_details and pred_properties[key] not in param_details['enum']:
+                            self.append_error_to_sample(sample_res, ErrorType.HALLUCINATED_PARAMETER_VALUE, key, gt_properties[key], pred_properties[key])
+                        else:
+                            self.append_error_to_sample(sample_res, ErrorType.INCORRECT_PARAMETER_VALUE, key, gt_properties[key], pred_properties[key])
                     else:
-                        self.append_error_to_sample(sample_res, ErrorType.INCORRECT_PARAMETER_VALUE, key, gt_properties[key], pred_properties[key])
+                        gt_values = gt_properties[key]
+                        pred_values = pred_properties[key]
+                        if not isinstance(pred_values, list):
+                            self.append_error_to_sample(sample_res, ErrorType.INCORRECT_PARAMETER_TYPE, key, gt_values[0], pred_values)
+                        else:
+                            gt_values.sort()
+                            pred_values.sort()
+                            # loop through all values of pred_values and check if they are in gt_values
+                            for pred_value in pred_values:
+                                if pred_value not in gt_values:
+                                    if 'enum' in param_details and pred_value not in param_details['enum']:
+                                        self.append_error_to_sample(sample_res, ErrorType.HALLUCINATED_ARRAY_ELEMENT, key, gt_values, pred_values)
+                                    else:
+                                        self.append_error_to_sample(sample_res, ErrorType.INCORRECT_ARRAY_ELEMENT, key, gt_values, pred_values)
+                            
+                            # loop through all values of gt_values and check if they are in pred_values
+                            for gt_value in gt_values:
+                                if gt_value not in pred_values:
+                                    self.append_error_to_sample(sample_res, ErrorType.MISSING_ARRAY_ELEMENT, key, gt_values, pred_values)        
+                            
 
             for key in pred_properties:
                 if key not in gt_properties:
                     self.append_error_to_sample(sample_res, ErrorType.HALLUCINATED_PARAMETER, key, None, pred_properties[key])
-            return False
+
+            if len(sample_res.get('errors', [])) == 0:
+                areEqual = True
+            
+            return areEqual
 
     def append_error_to_sample(self, sample_res, error_type, key, gt_value, pred_value):
         """Appends an error to the sample result."""

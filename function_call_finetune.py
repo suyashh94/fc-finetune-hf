@@ -15,7 +15,7 @@ import os
 import argparse
 
 argparser = argparse.ArgumentParser()
-argparser.add_argument("--data_path", type=str, default="./data/car_finetuning_gpt_False.npy")
+argparser.add_argument("--data_path", type=str, default="./data/car_instruction_fc_ft_False-train.npy")
 argparser.add_argument("--save_adapter_path", type=str, default="./phi-2-adapter")
 argparser.add_argument("--base_model", type=str, default="microsoft/phi-2")
 

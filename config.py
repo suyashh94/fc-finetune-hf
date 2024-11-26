@@ -28,7 +28,7 @@ functions = [
                 }
             },
             "required": ["temperature"],
-            "optional": ["zone"]
+            "optional": ["zone","unit"]
         }
     },
     {
@@ -389,4 +389,8 @@ class ErrorType(Enum):
     HALLUCINATED_PARAMETER = "HallucinatedParameter"
     HALLUCINATED_PARAMETER_VALUE = "HallucinatedParameterValue"
     HALLUCINATED_FUNCTION = "HallucinatedFunction"
+    INCORRECT_PARAMETER_TYPE_ARRAY = "IncorrectParameterTypeArray"
+    MISSING_ARRAY_ELEMENT = "MissingArrayElement"
+    HALLUCINATED_ARRAY_ELEMENT = "HallucinatedArrayElement"
+    INCORRECT_ARRAY_ELEMENT = "IncorrectArrayElement"
     
