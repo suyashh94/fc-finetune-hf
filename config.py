@@ -1,13 +1,16 @@
+from enum import Enum
+
+
 functions = [
     {
-        "name": "adjust_temperature",
-        "description": "Adjust the temperature in a specified zone of the car.",
+        "name": "set_temperature",
+        "description": "Set the temperature in a specified zone of the car.",
         "parameters": {
             "type": "object",
             "properties": {
                 "zone": {
-                    "type": "string",
-                    "enum": ["front", "rear", "all"],
+                    "type": "array[string]",
+                    "enum": ["front", "rear", "driver-right",'passenger-left','rear-right','rear-left','all'],
                     "description": "The zone where the temperature will be adjusted.",
                     "default": "all"
                 },
@@ -16,9 +19,86 @@ functions = [
                     "description": "The target temperature for the specified zone in degrees Celsius.",
                     "lower_bound": 1,
                     "upper_bound": 80
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "The unit of the temperature value.",
+                    "enum": ["Celsius", "Fahrenheit"],
+                    "default": "Celsius"
                 }
             },
             "required": ["temperature"],
+            "optional": ["zone"]
+        }
+    },
+    {
+        "name": "adjust_fan_speed",
+        "description": "Adjust the fan speed of the car's climate control system.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "speed": {
+                    "type": "string",
+                    "description": "The desired fan speed level",
+                    "enum": ['increase','decrease','max','min'],
+                    "default": 'increase',
+                },
+                'area': {
+                    "type": "array[string]",
+                    "description": "The area to adjust the fan speed for.",
+                    "enum": ["front", "rear", "driver-right",'passenger-left','rear-right','rear-left','all'],
+                    "default": "all" 
+                },
+            },
+            "required": [
+                "speed"
+            ],
+            "optional": ["area"]
+        }
+    },
+    {
+        'name':'set_fan_speed',
+        'description':'Set the fan speed of the car\'s climate control system.',
+        'parameters':{
+            'type':'object',
+            'properties':{
+                'speed':{
+                    'type':'string',
+                    'description':'The desired fan speed level',
+                    'enum': ['LOW','MEDIUM','HIGH'],
+                    'default': 'MEDIUM',
+                },
+                'area':{
+                    'type':'array[string]',
+                    'description':'The area to adjust the fan speed for.',
+                    'enum': ["front", "rear", "driver-right",'passenger-left','rear-right','rear-left','all'],
+                    'default': 'all'
+                }
+            },
+            'required': ['speed'],
+            'optional': ['area']
+        },
+    },
+    {
+        "name": "adjust_temperature",
+        "description": "Adjust the temperature in a specified zone of the car.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "zone": {
+                    "type": "array[string]",
+                    "enum": ["front", "rear", "driver-right",'passenger-left','rear-right','rear-left','all'],
+                    "description": "The zone where the temperature will be adjusted.",
+                    "default": "all"
+                },
+                "action": {
+                    "type": "string",
+                    "description": "The action to perform on the temperature (e.g., 'increase', 'decrease').",
+                    "enum": ["increase", "decrease"],
+                    "default": "increase"
+                },
+            },
+            "required": ["action"],
             "optional": ["zone"]
         }
     },
@@ -30,18 +110,18 @@ functions = [
             "properties": {
                 "seat_type": {
                     "type": "string",
-                    "enum": ["driver", "passenger"],
+                    "enum": ["driver", "passenger", "rear_right", "rear_left","all"],
                     "description": "The type of seat to adjust.",
                     "default": "driver"
                 },
                 "position": {
                     "type": "string",
                     "description": "The desired position of the seat (e.g., 'forward', 'backward', 'up', 'down').",
-                    "enum": ["forward", "backward", "up", "down"]
+                    "enum": ["forward", "backward", "up", "down","incline","decline"]
                 },
             },
             "required": ["position"],
-            "optional": ["seat_type"]
+            "optional": ["seat_type"],
         }
     },
     {
@@ -58,8 +138,8 @@ functions = [
                 "window_location": {
                     "type": "string",
                     "description": "The location of the window (e.g., 'driver', 'passenger', 'rear_right', 'rear_left').",
-                    "default": "driver",
-                    "enum": ["driver", "passenger", "rear_right", "rear_left"]
+                    "default": "all",
+                    "enum": ["driver", "passenger", "rear_right", "rear_left","all"]
                 }
             },
             "required": ["window_position"],
@@ -135,7 +215,7 @@ functions = [
             "properties": {
                 "lock": {
                     "type": "string",
-                    "description": "Set to true to lock the doors, false to unlock.",
+                    "description": "Set to 'lock' to lock the doors, 'unlock' to unlock.",
                     "default": "lock",
                     "enum": ["lock", "unlock"]
                 }
@@ -178,7 +258,7 @@ functions = [
             "properties": {
                 "state": {
                     "type": "string",
-                    "description": "Set to true to turn the headlights on, false to turn them off.",
+                    "description": "Set to 'on' to turn the headlights on, 'off' to turn them off.",
                     "enum": ["on", "off"]
                 }
             },
@@ -284,7 +364,6 @@ functions = [
     }
 ]
 
-from enum import Enum
 
 class ErrorType(Enum):
     INVALID_FUNCTION = "InvalidFunction"

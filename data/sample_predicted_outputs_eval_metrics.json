@@ -7,7 +7,6 @@
                 "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 62}\"} <|im_end|><|endoftext|>",
                 "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 60}\"} <|im_end|><|endoftext|>",
                 "fn_match": true,
-                "arg_match": false,
                 "errors": [
                     {
                         "error_type": "IncorrectParameterValue",
@@ -15,7 +14,8 @@
                         "gt_value": 62,
                         "pred_value": 60
                     }
-                ]
+                ],
+                "arg_match": false
             },
             {
                 "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_cruise_control\", \"arguments\": \"{'speed': 122}\"} <|im_end|><|endoftext|>",
@@ -69,7 +69,6 @@
                 "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
                 "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'side', 'window_location': 'passenger'}\"} <|im_end|><|endoftext|>",
                 "fn_match": true,
-                "arg_match": false,
                 "errors": [
                     {
                         "error_type": "HallucinatedParameterValue",
@@ -77,7 +76,8 @@
                         "gt_value": "down",
                         "pred_value": "side"
                     }
-                ]
+                ],
+                "arg_match": false
             },
             {
                 "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'down', 'window_location': 'driver'}\"} <|im_end|><|endoftext|>",
@@ -155,7 +155,6 @@
                 "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless'}\"} <|im_end|><|endoftext|>",
                 "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{'method': 'keyless','type':'on'}\"} <|im_end|><|endoftext|>",
                 "fn_match": true,
-                "arg_match": false,
                 "errors": [
                     {
                         "error_type": "HallucinatedParameter",
@@ -163,7 +162,8 @@
                         "gt_value": null,
                         "pred_value": "on"
                     }
-                ]
+                ],
+                "arg_match": false
             },
             {
                 "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"start_engine\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>",
@@ -254,7 +254,6 @@
                 "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 3, 'defroster_zone': 'all'}\"} <|im_end|><|endoftext|>",
                 "pred": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 3}\"} <|im_end|><|endoftext|>",
                 "fn_match": true,
-                "arg_match": false,
                 "errors": [
                     {
                         "error_type": "MissingParameter",
@@ -262,7 +261,8 @@
                         "gt_value": "all",
                         "pred_value": null
                     }
-                ]
+                ],
+                "arg_match": false
             },
             {
                 "gt": "<|im_start|>assistant\n<functioncall> {\"name\": \"activate_defroster\", \"arguments\": \"{'duration_minutes': 6}\"} <|im_end|><|endoftext|>",
