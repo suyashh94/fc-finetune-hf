@@ -291,4 +291,6 @@ class ErrorType(Enum):
     MISSING_PARAMETER = "MissingParameter"
     INCORRECT_PARAMETER_VALUE = "IncorrectParameterValue"
     HALLUCINATED_PARAMETER = "HallucinatedParameter"
+    HALLUCINATED_PARAMETER_VALUE = "HallucinatedParameterValue"
+    HALLUCINATED_FUNCTION = "HallucinatedFunction"
     

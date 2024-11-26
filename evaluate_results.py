@@ -3,7 +3,7 @@ import json
 import numpy as np
 import argparse
 from utils import convert_command
-from config import ErrorType
+from config import ErrorType, functions
 
 argparser = argparse.ArgumentParser()
 argparser.add_argument("--result_file", type=str, default="./data/car_finetuning_gpt_False_output.json")
@@ -52,12 +52,23 @@ for output in results:
     else:
         sample_res['fn_match'] = False
         sample_res['errors'] = sample_res.get('errors', [])
-        sample_res['errors'].append({
-            'error_type': ErrorType.INVALID_FUNCTION,
-            'key': None,
-            'gt_value': gt_fn_call['fn_name'],
-            'pred_value': pred_fn_call['fn_name']
-        })
+        
+        allowed_pred_fns = list(map(lambda x: x['name'], functions))
+        
+        if pred_fn_call['fn_name'] not in allowed_pred_fns:
+            sample_res['errors'].append({
+                'error_type': ErrorType.HALLUCINATED_FUNCTION.value,
+                'key': None,
+                'gt_value': gt_fn_call['fn_name'],
+                'pred_value': pred_fn_call['fn_name']
+            })
+        else:
+            sample_res['errors'].append({
+                'error_type': ErrorType.INVALID_FUNCTION.value,
+                'key': None,
+                'gt_value': gt_fn_call['fn_name'],
+                'pred_value': pred_fn_call['fn_name']
+            })
     
     if sample_res['fn_match'] == True:    
     
@@ -70,25 +81,37 @@ for output in results:
                 if key not in pred_fn_call['properties']:
                     sample_res['errors'] = sample_res.get('errors', [])
                     sample_res['errors'].append({
-                        'error_type': ErrorType.MISSING_PARAMETER,
+                        'error_type': ErrorType.MISSING_PARAMETER.value,
                         'key': key,
                         'gt_value': gt_fn_call['properties'][key],
                         'pred_value': None
                     })
                 elif gt_fn_call['properties'][key] != pred_fn_call['properties'][key]:
                     sample_res['errors'] = sample_res.get('errors', [])
-                    sample_res['errors'].append({
-                        'error_type': ErrorType.INCORRECT_PARAMETER_VALUE,
-                        'key': key,
-                        'gt_value': gt_fn_call['properties'][key],
-                        'pred_value': pred_fn_call['properties'][key]
-                    })
+                    
+                    
+                    fn_details = list(filter(lambda x: x['name'] == gt_fn, functions))[0]
+                    if 'enum' in fn_details['parameters']['properties'][key] and pred_fn_call['properties'][key] not in fn_details['parameters']['properties'][key]['enum']:
+                        sample_res['errors'].append({
+                            'error_type': ErrorType.HALLUCINATED_PARAMETER_VALUE.value,
+                            'key': key,
+                            'gt_value': gt_fn_call['properties'][key],
+                            'pred_value': pred_fn_call['properties'][key]
+                        })
+                        
+                    else:
+                        sample_res['errors'].append({
+                            'error_type': ErrorType.INCORRECT_PARAMETER_VALUE.value,
+                            'key': key,
+                            'gt_value': gt_fn_call['properties'][key],
+                            'pred_value': pred_fn_call['properties'][key]
+                        })
             
             for key in pred_fn_call['properties']:
                 if key not in gt_fn_call['properties']:
                     sample_res['errors'] = sample_res.get('errors', [])
                     sample_res['errors'].append({
-                        'error_type': ErrorType.HALLUCINATED_PARAMETER,
+                        'error_type': ErrorType.HALLUCINATED_PARAMETER.value,
                         'key': key,
                         'gt_value': None,
                         'pred_value': pred_fn_call['properties'][key]
@@ -101,10 +124,12 @@ for output in results:
     except:
         import pdb; pdb.set_trace()
 
+# import pdb; pdb.set_trace()
+
 with open(result_file.replace(".json", "_eval_metrics.json"), "w") as f:
     json.dump(eval_result, f)
 
-import pdb; pdb.set_trace()
+# import pdb; pdb.set_trace()
     
 
     
