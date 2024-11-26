@@ -1,0 +1,7 @@
+-- CLEAN REPOSITORY 
+-- ADD SUPPORT FOR reject_request
+    - cases where request cannot be fulfilled (a better solution that checking for "allowed" functions)
+-- ADD request for required parameters in natural language and then constructing proper function call from that 
+-- ADD enquiry for optional parameters in natural language and then updating function call from there 
+-- ADD conversational reply post execution of function calling 
+-- ADD conversational history based function callingn construction

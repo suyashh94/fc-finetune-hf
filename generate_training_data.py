@@ -17,8 +17,6 @@ def get_randon_question(function_name:str, questions_dict: dict[str: list[str]])
     else:
         return ""  
 
-
-
 def get_random_value(param: str, data_type: str):
     fake = Faker()
 
