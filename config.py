@@ -10,7 +10,7 @@ functions = [
             "properties": {
                 "zone": {
                     "type": "array[string]",
-                    "enum": ["front", "rear", "driver-right",'passenger-left','rear-right','rear-left','all'],
+                    "enum": ["driver-right",'passenger-left','rear-right','rear-left','all'],
                     "description": "The zone where the temperature will be adjusted.",
                     "default": "all"
                 },
@@ -40,7 +40,7 @@ functions = [
                 "speed": {
                     "type": "string",
                     "description": "The desired fan speed level",
-                    "enum": ['increase','decrease','max','min'],
+                    "enum": ['increase','decrease'],
                     "default": 'increase',
                 },
                 'area': {
@@ -148,6 +148,23 @@ functions = [
     },
     {
         "name": "adjust_wiper_speed",
+        "description": "Adjust the windshield wipers.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "speed": {
+                    "type": "integer",
+                    "description": "The speed of the wipers (e.g., 1 for low, 2 for medium, 3 for high).",
+                    "enum": ['INCREASE','DECREASE'],
+                }
+            },
+            "required": [
+                "speed"
+            ]
+        }
+    },
+    {
+        "name": "set_wiper_speed",
         "description": "Activate the windshield wipers.",
         "parameters": {
             "type": "object",
@@ -155,7 +172,7 @@ functions = [
                 "speed": {
                     "type": "integer",
                     "description": "The speed of the wipers (e.g., 1 for low, 2 for medium, 3 for high).",
-                    "enum": [1, 2, 3]
+                    "enum": ['HIGH','MEDIUM','LOW'],
                 }
             },
             "required": [
