@@ -2,6 +2,8 @@ import os
 import json
 import random
 import argparse
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from config import functions
 from dotenv import load_dotenv
 
@@ -151,7 +153,18 @@ class FunctionCallGenerator:
         """
         Saves the generated function calls to a JSON file specified by self.output_file.
         """
-        with open(self.output_file, "w") as f:
+        currDir = os.path.dirname(os.path.realpath(__file__))
+        # find parent of current directory
+        parentDir = os.path.abspath(os.path.join(currDir, os.pardir))
+        saveDir = os.path.join(parentDir, "data")
+        
+        if not os.path.exists(saveDir):
+            os.makedirs(saveDir)
+        
+        save_path = os.path.join(saveDir, self.output_file)
+        
+        
+        with open(save_path, "w") as f:
             json.dump(self.function_calls, f, indent=4)
 
     def run(self):
@@ -164,9 +177,9 @@ class FunctionCallGenerator:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--n', type=int, default=50, help='Number of function calls per function')
+    parser.add_argument('--n', type=int, default=5, help='Number of function calls per function')
     parser.add_argument('--opt_prob', type=float, default=0.5, help='Probability of including optional parameters')
-    parser.add_argument('--output_file', type=str, default='./data/function_calls.json', help='Output file path')
+    parser.add_argument('--output_file', type=str, default='function_calls.json', help='Output file path')
     args = parser.parse_args()
 
     generator = FunctionCallGenerator(functions, n=args.n, opt_prob=args.opt_prob, output_file=args.output_file)

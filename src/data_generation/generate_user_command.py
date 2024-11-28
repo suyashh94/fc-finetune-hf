@@ -5,11 +5,14 @@ import argparse
 from dotenv import load_dotenv
 from langchain_openai import AzureChatOpenAI
 from langchain.prompts import ChatPromptTemplate
-
+import random
+from concurrent.futures import ThreadPoolExecutor, as_completed
 load_dotenv()
+import threading
+import time
 
 class CommandGenerator:
-    def __init__(self, input_file, output_file, n=2, sleep_interval=1.0, batch_size=10):
+    def __init__(self, input_file, output_file, n=2, sleep_interval=1.0, batch_size=50):
         """
         Initializes the CommandGenerator with the given parameters.
 
@@ -23,13 +26,14 @@ class CommandGenerator:
         self.output_file = output_file
         self.n = n
         self.sleep_interval = sleep_interval
-        self.batch_size = batch_size
         self.data = {}
         self.llm = None
 
-        load_dotenv()
+        self.command_count = 0  # Global counter for commands executed
+        self.lock = threading.Lock()  # Lock for thread-safe counter updates
         self.initialize_llm()
         self.load_personas()
+        self.batch_size = batch_size
 
     def initialize_llm(self):
         """Initializes the AzureChatOpenAI LLM client."""
@@ -115,6 +119,16 @@ class CommandGenerator:
         self.personas = personas
         return 
     
+    def check_rate_limit(self):
+        """
+        Checks the rate limit and pauses execution if the command count exceeds the limit.
+        """
+        with self.lock:
+            if self.command_count >= self.batch_size:
+                print("Rate limit reached. Waiting for 1 seconds...")
+                time.sleep(1)  # Wait for 60 seconds
+                self.command_count = 0  # Reset the counter after the wait
+    
     def generate_command(self, function_call, persona_definition):
         """
         Generates user commands for a given function call.
@@ -125,19 +139,19 @@ class CommandGenerator:
         prompt = ChatPromptTemplate.from_messages(
             [
                 (
-                "human","You are a helpful AI assistant, helping a data scientist who is working on a project with a car manufacturer who wants to create an AI powered voice assistant for their cars. "
+                "system","You are a helpful AI assistant, helping a data scientist who is working on a project with a car manufacturer who wants to create an AI powered voice assistant for their cars. "
                 ),
                 ("human","{persona_definition}"),
                 (
-                    "human","You have to generate commands that will trigger the given <FUNCTION_CALL>."
-                ),
-                (
-                    "human", "The <FUNCTION_CALL> is: {function_call}"
+                    "human","You have to generate one command that will trigger the given <FUNCTION_CALL>."
                 ),
                 ("human", "You should consider the parameters of the function, understand them and then generate command that will trigger the given function with the given parameter values."),
                 ("human","Command should sound human like and should imitate the manner in which humans interact with cars."),
-                ("human","You should abstract out parameter names and are not required to use the exact parameter names when stating parameter values for that parameter."),
-                ("human","You should also abstract out parameter values and understand the context and meaning, and can use synonyms or similar words that will lead to the same parameter values."),
+                (
+                "human", "The <FUNCTION_CALL> is: {function_call}"
+                ),
+                ("human", "Do not output anything other than the command."),
+                
             ]
         )
 
@@ -157,26 +171,55 @@ class CommandGenerator:
 
         return all_commands
 
-    def generate_commands_for_all_functions(self):
-        import random
-        """Generates commands for all function calls in the data."""
-        for function_name in self.data.keys():
-            print(f"Generating commands for function: {function_name}")
-            self.data[function_name]['user_commands'] = []
-            for i, call in enumerate(self.data[function_name]['calls']):
-                print(f"Generating commands for call: {call}")
-                # select a 3 personas randomly from self.personas
-                command_personas = random.sample(self.personas, 3)
-                for persona in command_personas:
-                    commands = self.generate_command(call, persona)
-                    self.data[function_name]['user_commands'].append(commands)
+    def generate_commands_for_function(self, function_name, calls):
+        """
+        Generates commands for a single function call in parallel for personas.
+        """
+        results = []
+        for call in calls:
+            command_personas = random.sample(self.personas, 3)  # Select 3 random personas
+            for persona in command_personas:
+                # Check rate limit
+                self.check_rate_limit()
 
-                if (i + 1) % self.batch_size == 0:
-                    # Sleep for specified interval after processing a batch
-                    time.sleep(self.sleep_interval)
+                # Generate the command
+                commands = self.generate_command(call, persona)
+                results.append(commands)
+
+                # Increment the global counter
+                with self.lock:
+                    self.command_count += 1
+        return function_name, results
+    
+    def generate_commands_for_all_functions(self):
+        """
+        Generates commands for all function calls in the data using parallelization.
+        """
+        with ThreadPoolExecutor() as executor:
+            future_to_function = {
+                executor.submit(self.generate_commands_for_function, function_name, self.data[function_name]['calls']): function_name
+                for function_name in self.data.keys()
+            }
+
+            for future in as_completed(future_to_function):
+                function_name = future_to_function[future]
+                try:
+                    _, generated_commands = future.result()
+                    self.data[function_name]['user_commands'] = generated_commands
+                except Exception as exc:
+                    print(f"Function {function_name} generated an exception: {exc}")
+    
 
     def save_commands(self):
         """Saves the data with generated commands to the output JSON file."""
+        
+        currDir = os.path.dirname(os.path.realpath(__file__))
+        parentDir = os.path.abspath(os.path.join(currDir, os.pardir))
+        saveDir = os.path.join(parentDir, "data")
+        if not os.path.exists(saveDir):
+            os.makedirs(saveDir)
+        
+        
         with open(self.output_file, 'w') as f:
             json.dump(self.data, f, indent=4)
 
@@ -188,8 +231,8 @@ class CommandGenerator:
 
 def main():
     parser = argparse.ArgumentParser(description="Generate user commands for function calls using an LLM.")
-    parser.add_argument('--input_file', type=str, default='./data/function_calls.json', help='Path to input JSON file containing function calls.')
-    parser.add_argument('--output_file', type=str, default='./data/function_calls_with_commands_new.json', help='Path to output JSON file to save commands.')
+    parser.add_argument('--input_file', type=str, default='../data/function_calls.json', help='Path to input JSON file containing function calls.')
+    parser.add_argument('--output_file', type=str, default='../data/fc_with_commands.json', help='Path to output JSON file to save commands.')
     parser.add_argument('--n', type=int, default=2, help='Number of commands to generate per function call.')
     parser.add_argument('--sleep_interval', type=float, default=1.0, help='Time to sleep between batches (in seconds).')
     parser.add_argument('--batch_size', type=int, default=10, help='Number of function calls to process before sleeping.')
@@ -205,4 +248,7 @@ def main():
     generator.run()
 
 if __name__ == "__main__":
+    start = time.time()
     main()
+    end = time.time()
+    print(f"Execution time: {end - start} seconds.")

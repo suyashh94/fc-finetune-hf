@@ -78,7 +78,7 @@ else:
     import random
     random.shuffle(eval_data)
     
-    n = 100
+    n = 1000
     
     for i,data in enumerate(eval_data):
         system_message = data["system"]
@@ -86,7 +86,7 @@ else:
         input_text = system_message + user_message
         input_ids = loaded_tokenizer(input_text, return_tensors="pt").to('cuda')
         
-        outputs = finetuned_model.to('cuda').generate(**input_ids, max_length=128)
+        outputs = finetuned_model.to('cuda').generate(**input_ids, max_length=512)
         data["model_response"] = loaded_tokenizer.decode(outputs[0])[len(input_text):]
         
         if i > n:

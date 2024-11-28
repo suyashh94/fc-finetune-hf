@@ -1,0 +1,21 @@
+Nov 27, 2024 : 
+
+-- Current Implementation: 
+- Functions have been defined in the config.py 
+- Functions can have required and optional parameters
+- Parameters can be of different types too (array, string, boolean, integer, number etc.)
+- Dummy function calls were generated and can be found in ./data/function_calls.json 
+- GPT was used to come up with "correct" user commands that will generate those function calls, containing 
+information that is required to the function call only 
+- Model was finetuned on this data for function calling 
+
+-- Current Observation: 
+- If the command is provided to do a specific thing, and if that thing can be done by the range of 
+functions on which model was trained on, correct function is output (~100% accuracy)
+
+- If the command has extra information or has things that are either not useful or make no sense, 
+model "hallucinates" parameters.
+
+- If the command has the right amount of information, then all of them are interpreted accurately (⬆️ 95%)
+
+- The command is incomplete, it hallucinates parameter value

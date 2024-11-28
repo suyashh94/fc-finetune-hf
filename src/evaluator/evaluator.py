@@ -83,7 +83,7 @@ class Evaluator:
                         gt_values = gt_properties[key]
                         pred_values = pred_properties[key]
                         if not isinstance(pred_values, list):
-                            self.append_error_to_sample(sample_res, ErrorType.INCORRECT_PARAMETER_TYPE, key, gt_values[0], pred_values)
+                            self.append_error_to_sample(sample_res, ErrorType.INCORRECT_PARAMETER_TYPE_ARRAY, key, gt_values[0], pred_values)
                         else:
                             gt_values.sort()
                             pred_values.sort()

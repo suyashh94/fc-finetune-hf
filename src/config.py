@@ -10,7 +10,7 @@ functions = [
             "properties": {
                 "zone": {
                     "type": "array[string]",
-                    "enum": ["driver-right",'passenger-left','rear-right','rear-left','all'],
+                    "enum": ["driver-right",'passenger-left','rear-right','rear-left'],
                     "description": "The zone where the temperature will be adjusted.",
                     "default": "all"
                 },
@@ -46,7 +46,7 @@ functions = [
                 'area': {
                     "type": "array[string]",
                     "description": "The area to adjust the fan speed for.",
-                    "enum": ["front", "rear", "driver-right",'passenger-left','rear-right','rear-left','all'],
+                    "enum": ["driver-right",'passenger-left','rear-right','rear-left'],
                     "default": "all" 
                 },
             },
@@ -71,7 +71,7 @@ functions = [
                 'area':{
                     'type':'array[string]',
                     'description':'The area to adjust the fan speed for.',
-                    'enum': ["front", "rear", "driver-right",'passenger-left','rear-right','rear-left','all'],
+                    'enum': ["driver-right",'passenger-left','rear-right','rear-left'],
                     'default': 'all'
                 }
             },
@@ -87,7 +87,7 @@ functions = [
             "properties": {
                 "zone": {
                     "type": "array[string]",
-                    "enum": ["front", "rear", "driver-right",'passenger-left','rear-right','rear-left','all'],
+                    "enum": ["driver-right",'passenger-left','rear-right','rear-left'],
                     "description": "The zone where the temperature will be adjusted.",
                     "default": "all"
                 },
@@ -110,7 +110,7 @@ functions = [
             "properties": {
                 "seat_type": {
                     "type": "string",
-                    "enum": ["driver", "passenger", "rear_right", "rear_left","all"],
+                    "enum": ["driver", "passenger", "rear_right", "rear_left"],
                     "description": "The type of seat to adjust.",
                     "default": "driver"
                 },
@@ -139,7 +139,7 @@ functions = [
                     "type": "string",
                     "description": "The location of the window (e.g., 'driver', 'passenger', 'rear_right', 'rear_left').",
                     "default": "all",
-                    "enum": ["driver", "passenger", "rear_right", "rear_left","all"]
+                    "enum": ["driver", "passenger", "rear_right", "rear_left"]
                 }
             },
             "required": ["window_position"],
