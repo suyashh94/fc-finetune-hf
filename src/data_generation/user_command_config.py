@@ -18,7 +18,14 @@ class MissingValuesCommandOutput(BaseModel):
 class MissingValuesOutput(BaseModel):
     result: List[MissingValuesCommandOutput] = Field(..., description="List of user commands generated for the function call with missing values.")
 
-correct_command_gen_prompt = [
+class IncompleteCommandOutput(BaseModel):
+    incomplete_command: str|None = Field(..., description="Incomplete user command generated for the function call.")
+    modified_incorrect_function_call: str|None = Field(..., description="Modified function call with missing values.")
+
+class IncompleteCommands(BaseModel):
+    incomplete_commands: List[IncompleteCommandOutput] = Field(..., description="List of incomplete user commands generated for the function call.")
+
+complete_command_gen_prompt = [
                  (
             "system",
             "You are a helpful AI assistant that generates natural-sounding user commands \
@@ -107,7 +114,7 @@ correct_command_gen_prompt = [
 
             ]
 
-missing_values_gen_prompt = \
+incomplete_command_gen_prompt = \
     [
         (
             "system",
@@ -165,4 +172,33 @@ missing_values_gen_prompt = \
             "human",
             "Function Call is {function_call}"
         ),
+    ]
+
+
+incomplete_command_gen_prompt_reinforced = \
+    [
+        (
+            "system",
+            "You are a helpful AI assistant that generates natural-sounding user commands for a voice-enabled car assistant. \
+                You have been givien a <CORRECT_FUNCTION_CALL> and the <COMPLETE_COMMAND> that would generate the function call. Your TASK \
+                    is to carefully analyze the <CORRECT_FUNCTION_CALL> and the <COMPLETE_COMMAND> and come up with \
+                        1 diverse <INCOMPLETE_COMMAND> that will be an incomplete version of the <COMPLETE_COMMAND>.\
+                            You should also output the <MODIFIED_INCORRECT_FUNCTION_CALL> that would be a modified version of <CORRECT_FUNCTION_CALL> that would comply with the <INCOMPLETE_COMMAND>"
+        ),
+        (
+            "human",
+            "<INCOMPLETE_COMMAND> should not add any new information to the <CORRECT_FUNCTION_CALL> and should only remove some or all information from the <CORRECT_FUNCTION_CALL>."
+        ),
+        ("human", "Make sure that <INCOMPLETE_COMMAND> is missing some or all information about parameters from the <COMPLETE_COMMAND> such that the <MODIFIED_INCORRECT_FUNCTION_CALL> would be an incorrect function call."),
+       ("human","If <CORRECT_FUNCTION_CALL> has 1 parameter, <INCOMPLETE_COMMAND> should not have that information in it."),
+        ("human", "Analyze the <INCOMPLETE_COMMAND> and <MODIFIED_INCORRECT_FUNCTION_CALL> carefully and if <CORRECT_FUNCTION_CALL> can be constructed with <INCOMPLETE_COMMAND>, you should provide a different <INCOMPLETE_COMMAND> and <MODIFIED_INCORRECT_FUNCTION_CALL>."),
+        
+         ("human", "If the <CORRECT_FUNCTION_CALL> has no parameters in it, then the <INCOMPLETE_COMMAND> should be empty string and the <MODIFIED_INCORRECT_FUNCTION_CALL> should also be empty string."),
+        (
+            "human",
+            "<CORRECT_FUNCTION_CALL> is {function_call}"
+        ),
+        ("human", "<COMPLETE_COMMAND> is {command}"),
+        ("human","Output only the set of <INCOMPLETE_COMMAND> and corresponding <MODIFIED_INCORRECT_FUNCTION_CALL> and nothing else."),
+        
     ]

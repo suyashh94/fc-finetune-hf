@@ -11,9 +11,9 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from config import functions
 
-from user_command_config import correct_command_gen_prompt, CorrectCommandsOutput, \
-     missing_values_gen_prompt,\
-        CommandType,MissingValuesOutput
+from user_command_config import complete_command_gen_prompt, CorrectCommandsOutput, \
+     incomplete_command_gen_prompt,\
+        CommandType,MissingValuesOutput,IncompleteCommands,incomplete_command_gen_prompt_reinforced, IncompleteCommandOutput
 load_dotenv()
 
 
@@ -74,7 +74,7 @@ class CommandGenerator:
                 print(f"Generated {self.global_request_count} commands. Pausing for {self.sleep_interval} seconds...")
                 time.sleep(self.sleep_interval)
 
-    def generate_command(self, function_call, type=CommandType.CORRECT_COMMANDS):
+    def generate_command(self, function_call):
         """Generates user commands for a given function call."""
         
         fn_name = function_call.split('(')[0]
@@ -82,13 +82,9 @@ class CommandGenerator:
         params = list(fn['parameters']['properties'].keys())
         description = fn['description']
         
-        if type == CommandType.CORRECT_COMMANDS:
-            prompt_message = correct_command_gen_prompt
-            parser = CorrectCommandsOutput
-        elif type == CommandType.MISSING_VALUES_COMMANDS:
-            prompt_message = missing_values_gen_prompt
-            parser = MissingValuesOutput
         
+        prompt_message = complete_command_gen_prompt
+        parser = CorrectCommandsOutput
         prompt = ChatPromptTemplate.from_messages(
              prompt_message
         )
@@ -104,31 +100,56 @@ class CommandGenerator:
                 # "function_description": description
              }
         )
-        if type == CommandType.CORRECT_COMMANDS:
-            all_commands = res.commands
-        elif type == CommandType.MISSING_VALUES_COMMANDS:
-            all_commands = res.result
-            all_commands = [c.dict() for c in all_commands]
+        all_commands = res.commands
+        all_incomplete_commands = []
         
-        return all_commands
+        incomplete_prompt_message = incomplete_command_gen_prompt_reinforced
+        incomplete_parser = IncompleteCommandOutput
+        incomplete_prompt = ChatPromptTemplate.from_messages(
+                incomplete_prompt_message
+            )
+        
+        incomplete_chain = incomplete_prompt | self.llm.with_structured_output(incomplete_parser)
+        
+        for command in all_commands:
+            self.check_rate_limit()  # Enforce global rate limit per command
+            res = incomplete_chain.invoke(
+                {
+                    "function_call": function_call,
+                    "command": command
+                }
+            )
+            incomplete_command = res.incomplete_command
+            modified_incorrect_function_call = res.modified_incorrect_function_call
+            print(f"Complete command: {command} for function call: {function_call}")
+            print(f"Incomplete command: {incomplete_command} with modified incorrect function call: {modified_incorrect_function_call}")
+            all_incomplete_commands.append({"incomplete_command": incomplete_command, "modified_incorrect_function_call": modified_incorrect_function_call})
+            
+            
+        
+        return all_commands, all_incomplete_commands
 
-    def generate_commands_for_function(self, function_name, type=CommandType.CORRECT_COMMANDS):
+    def generate_commands_for_function(self, function_name):
         """Generates commands for all calls of a single function."""
         function_data = self.data[function_name]
-        function_data["user_commands_{}".format(type.name)] = []  # Initialize the user_commands key
+        function_data["complete_commands"] = []  # Initialize the user_commands key
+        function_data["incomplete_commands"] = []  # Initialize the user_commands key
 
-        for call in function_data["calls"]:
-            commands = self.generate_command(call, type=type)
-            function_data["user_commands_{}".format(type.name)].append(commands)
-            # break
+        for i,call in enumerate(function_data["calls"]):
+            complete_commands, incomplete_commands = self.generate_command(call)
+            function_data["complete_commands"].append(complete_commands)
+            function_data["incomplete_commands"].append(incomplete_commands)
+            
+            if i == 4:
+                break
 
-    def generate_commands_for_all_functions(self, parallel=True, type=CommandType.CORRECT_COMMANDS):
+    def generate_commands_for_all_functions(self, parallel=True):
         # import pdb; pdb.set_trace()
         """Generates commands for all functions using multithreading."""
         if parallel:
             with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
                 futures = [
-                    executor.submit(self.generate_commands_for_function, function_name, type)
+                    executor.submit(self.generate_commands_for_function, function_name)
                     for function_name in self.data.keys()
                 ]
                 for future in futures:
@@ -149,7 +170,7 @@ class CommandGenerator:
     def run(self, parallel=True, type=CommandType.CORRECT_COMMANDS):
         """Executes the entire command generation pipeline."""
         self.load_function_calls()
-        self.generate_commands_for_all_functions(parallel=parallel, type=type)
+        self.generate_commands_for_all_functions(parallel=parallel)
         self.save_commands()
 
 def main():
@@ -161,16 +182,10 @@ def main():
     parser.add_argument('--max_threads', type=int, default=4, help='Maximum number of threads for parallel processing.')
     parser.add_argument('--batch_size', type=int, default=5, help='Number of commands to generate before pausing.')
     parser.add_argument('--parallel', action='store_true', help='Enable parallel processing.')
-    parser.add_argument('--type', type=str, default='correct_commands', help='Type of commands to generate.', \
-        choices=['correct_commands', 'missing_values_commands'])
+    
     
     
     args = parser.parse_args()
-    
-    if args.type == 'correct_commands':
-        type = CommandType.CORRECT_COMMANDS
-    elif args.type == 'missing_values_commands':
-        type = CommandType.MISSING_VALUES_COMMANDS
 
     generator = CommandGenerator(
         input_file=args.input_file,
