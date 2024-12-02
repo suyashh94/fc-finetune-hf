@@ -177,7 +177,7 @@ class FunctionCallGenerator:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--n', type=int, default=5, help='Number of function calls per function')
+    parser.add_argument('--n', type=int, default=10, help='Number of function calls per function')
     parser.add_argument('--opt_prob', type=float, default=0.5, help='Probability of including optional parameters')
     parser.add_argument('--output_file', type=str, default='function_calls.json', help='Output file path')
     args = parser.parse_args()

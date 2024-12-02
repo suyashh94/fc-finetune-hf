@@ -8,7 +8,7 @@ functions = [
         "parameters": {
             "type": "object",
             "properties": {
-                "zone": {
+                "area": {
                     "type": "array[string]",
                     "enum": ["driver-right",'passenger-left','rear-right','rear-left'],
                     "description": "The zone where the temperature will be adjusted.",
@@ -28,7 +28,7 @@ functions = [
                 }
             },
             "required": ["temperature"],
-            "optional": ["zone","unit"]
+            "optional": ["area","unit"]
         }
     },
     {
@@ -85,7 +85,7 @@ functions = [
         "parameters": {
             "type": "object",
             "properties": {
-                "zone": {
+                "area": {
                     "type": "array[string]",
                     "enum": ["driver-right",'passenger-left','rear-right','rear-left'],
                     "description": "The zone where the temperature will be adjusted.",
@@ -99,7 +99,7 @@ functions = [
                 },
             },
             "required": ["action"],
-            "optional": ["zone"]
+            "optional": ["area"]
         }
     },
     {
@@ -230,7 +230,7 @@ functions = [
         "parameters": {
             "type": "object",
             "properties": {
-                "lock": {
+                "lock_state": {
                     "type": "string",
                     "description": "Set to 'lock' to lock the doors, 'unlock' to unlock.",
                     "default": "lock",
@@ -238,7 +238,7 @@ functions = [
                 }
             },
             "required": [
-                "lock"
+                "lock_state"
             ]
         }
     },
@@ -273,14 +273,14 @@ functions = [
         "parameters": {
             "type": "object",
             "properties": {
-                "state": {
+                "light_state": {
                     "type": "string",
                     "description": "Set to 'on' to turn the headlights on, 'off' to turn them off.",
                     "enum": ["on", "off"]
                 }
             },
             "required": [
-                "state"
+                "light_state"
             ]
         }
     },
