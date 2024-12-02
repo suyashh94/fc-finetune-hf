@@ -25,6 +25,10 @@ class IncompleteCommandOutput(BaseModel):
 class IncompleteCommands(BaseModel):
     incomplete_commands: List[IncompleteCommandOutput] = Field(..., description="List of incomplete user commands generated for the function call.")
 
+class SampleCorrectnessJudgement(BaseModel):
+    judgement: bool = Field(..., description="Judgement of correctness of the modified function call.")
+    reason: str = Field(..., description="Reason for the judgement.")
+
 complete_command_gen_prompt = [
                  (
             "system",
@@ -179,11 +183,14 @@ incomplete_command_gen_prompt_reinforced = \
     [
         (
             "system",
-            "You are a helpful AI assistant that generates natural-sounding user commands for a voice-enabled car assistant. \
-                You have been givien a <CORRECT_FUNCTION_CALL> and the <COMPLETE_COMMAND> that would generate the function call. Your TASK \
-                    is to carefully analyze the <CORRECT_FUNCTION_CALL> and the <COMPLETE_COMMAND> and come up with \
-                        1 diverse <INCOMPLETE_COMMAND> that will be an incomplete version of the <COMPLETE_COMMAND>.\
-                            You should also output the <MODIFIED_INCORRECT_FUNCTION_CALL> that would be a modified version of <CORRECT_FUNCTION_CALL> that would comply with the <INCOMPLETE_COMMAND>"
+            "\
+            You are a helpful AI assistant that generates natural-sounding user commands for a voice-enabled car assistant. \
+            You have been givien a <CORRECT_FUNCTION_CALL> and the <COMPLETE_COMMAND> that would generate the function call. Your TASK \
+            is to carefully analyze the <CORRECT_FUNCTION_CALL> and the <COMPLETE_COMMAND> and come up with \
+            1 diverse <INCOMPLETE_COMMAND> that will be an incomplete version of the <COMPLETE_COMMAND>.\
+            You should also output the <MODIFIED_INCORRECT_FUNCTION_CALL> that would be a modified \
+            version of <CORRECT_FUNCTION_CALL> that would comply with the <INCOMPLETE_COMMAND>\
+            "
         ),
         (
             "human",
@@ -201,4 +208,28 @@ incomplete_command_gen_prompt_reinforced = \
         ("human", "<COMPLETE_COMMAND> is {command}"),
         ("human","Output only the set of <INCOMPLETE_COMMAND> and corresponding <MODIFIED_INCORRECT_FUNCTION_CALL> and nothing else."),
         
+    ]
+
+incorrectness_judgement_prompt = \
+    [
+        ("system","You are AI assistant whose task is to judge."),
+        ("human","You have been given a \
+                <INCOMPLETE_USER_COMMAND> and a <MODIFIED_INCORRECT_FUNCTION_CALL> that corresponds to it. \
+                Your task is to judge whether <MODIFIED_INCORRECT_FUNCTION_CALL> mentions the parameters and parameter values in the <INCOMPLETE_USER_COMMAND> correctly."),
+        
+        ("human","Guidelines for judgement:"),
+        ("human","1. If a parameter and its value is mentioned in <INCOMPLETE_USER_COMMAND>, then the same parameter and value SHOULD BE mentioned in <MODIFIED_INCORRECT_FUNCTION_CALL> correctly."),
+        ("human","2.  <MODIFIED_INCORRECT_FUNCTION_CALL> SHOULD NOT HAVE ANY information \
+            that is not present in <INCOMPLETE_USER_COMMAND> or CANNOT BE INFERRED from <INCOMPLETE_USER_COMMAND>."),
+        ("human","3. If parameter value CAN BE INFERRED from <INCOMPLETE_USER_COMMAND>, it SHOULD BE present in <MODIFIED_INCORRECT_FUNCTION_CALL>."),
+        ("human","4. If a parameter is mentioned in <INCOMPLETE_USER_COMMAND> but its value is not mentioned, then the parameter SHOULD NOT be present in <MODIFIED_INCORRECT_FUNCTION_CALL>"),
+        ("human","Function name SHOULD NOT play any role in the judgement."),
+        ("human","You have to judge only on the basis of parameters and their values between <INCOMPLETE_USER_COMMAND> and <MODIFIED_INCORRECT_FUNCTION_CALL>."),
+        ("human","Parameters you should be concerned about, for this judgement are: {parameters}"),
+        
+        ("human","Output True or False and the reason for your judgement"),
+        
+        
+        ("human","<INCOMPLETE_USER_COMMAND> is {incomplete_user_command}"),
+        ("human","<MODIFIED_INCORRECT_FUNCTION_CALL> is {modified_incorrect_function_call}"),
     ]

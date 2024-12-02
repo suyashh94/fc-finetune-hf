@@ -13,7 +13,10 @@ from config import functions
 
 from user_command_config import complete_command_gen_prompt, CorrectCommandsOutput, \
      incomplete_command_gen_prompt,\
-        CommandType,MissingValuesOutput,IncompleteCommands,incomplete_command_gen_prompt_reinforced, IncompleteCommandOutput
+        CommandType,MissingValuesOutput,IncompleteCommands,\
+            incomplete_command_gen_prompt_reinforced, IncompleteCommandOutput,\
+                SampleCorrectnessJudgement, incorrectness_judgement_prompt
+            
 load_dotenv()
 
 
@@ -125,8 +128,6 @@ class CommandGenerator:
             print(f"Incomplete command: {incomplete_command} with modified incorrect function call: {modified_incorrect_function_call}")
             all_incomplete_commands.append({"incomplete_command": incomplete_command, "modified_incorrect_function_call": modified_incorrect_function_call})
             
-            
-        
         return all_commands, all_incomplete_commands
 
     def generate_commands_for_function(self, function_name):
@@ -140,7 +141,7 @@ class CommandGenerator:
             function_data["complete_commands"].append(complete_commands)
             function_data["incomplete_commands"].append(incomplete_commands)
             
-            if i == 4:
+            if i == 1:
                 break
 
     def generate_commands_for_all_functions(self, parallel=True):
@@ -159,8 +160,69 @@ class CommandGenerator:
                         print(f"Error in generating commands: {exc}")
         else:
             for function_name in self.data.keys():
-                self.generate_commands_for_function(function_name, type=type)
+                self.generate_commands_for_function(function_name)
 
+    def is_negative_sample_correct(self, incomplete_user_command, modified_incorrect_function_call, parameters):
+        
+        prompt_message = incorrectness_judgement_prompt
+        parser = SampleCorrectnessJudgement
+        prompt = ChatPromptTemplate.from_messages(
+             prompt_message
+        )
+        chain = prompt | self.llm.with_structured_output(parser)
+        res = chain.invoke(
+            {
+                "incomplete_user_command": incomplete_user_command,
+                "modified_incorrect_function_call": modified_incorrect_function_call,
+                "parameters": parameters
+             }
+        )
+        return res.judgement, res.reason
+        
+        # return True
+    
+    def validate_negative_samples_for_function(self, function_name):
+        """Validates negative samples for a single function."""
+        function_data = self.data[function_name]
+        incomplete_calls = function_data["incomplete_commands"]
+        complete_calls = function_data["complete_commands"]
+        fn_calls = function_data["calls"]
+        
+        
+        fn = list(filter(lambda x: x['name'] == function_name, functions))[0]
+        params = list(fn['parameters']['properties'].keys())
+        
+        for i, call in enumerate(incomplete_calls):
+            fn_call = fn_calls[i]
+            complete_commads = complete_calls[i]
+            for j, incomplete_call in enumerate(call):
+                inc_command = incomplete_call["incomplete_command"]
+                inc_fn_call = incomplete_call["modified_incorrect_function_call"]
+                com_fn_call = fn_calls[i]
+                com_command = complete_commads[j]
+                is_correct, reason = self.is_negative_sample_correct(inc_command, inc_fn_call, params)
+                incomplete_calls[i][j]["is_correct"] = is_correct
+                incomplete_calls[i][j]["reason"] = reason
+        
+        function_data["incomplete_commands"] = incomplete_calls    
+    
+    def validate_negative_samples_for_all_functions(self, parallel=True):
+        """Validates negative samples for all functions using multithreading."""
+        if parallel:
+            with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
+                futures = [
+                    executor.submit(self.validate_negative_samples_for_function, function_name)
+                    for function_name in self.data.keys()
+                ]
+                for future in futures:
+                    try:
+                        future.result()
+                    except Exception as exc:
+                        print(f"Error in validating negative samples: {exc}")
+        else:
+            for function_name in self.data.keys():
+                self.validate_negative_samples_for_function(function_name)
+    
     def save_commands(self):
         """Saves the data with generated commands to the output JSON file."""
         # import pdb; pdb.set_trace()
@@ -170,7 +232,11 @@ class CommandGenerator:
     def run(self, parallel=True, type=CommandType.CORRECT_COMMANDS):
         """Executes the entire command generation pipeline."""
         self.load_function_calls()
+        
         self.generate_commands_for_all_functions(parallel=parallel)
+        
+        self.validate_negative_samples_for_all_functions(parallel=parallel)
+        
         self.save_commands()
 
 def main():
