@@ -10,7 +10,7 @@ functions = [
             "properties": {
                 "area": {
                     "type": "array[string]",
-                    "enum": ["driver-right",'passenger-left','rear-right','rear-left'],
+                    "enum": ["driver",'passenger','rear-right','rear-left'],
                     "description": "The zone where the temperature will be adjusted.",
                     "default": "all"
                 },
@@ -46,7 +46,7 @@ functions = [
                 'area': {
                     "type": "array[string]",
                     "description": "The area to adjust the fan speed for.",
-                    "enum": ["driver-right",'passenger-left','rear-right','rear-left'],
+                    "enum": ["driver",'passenger','rear-right','rear-left'],
                     "default": "all" 
                 },
             },
@@ -71,7 +71,7 @@ functions = [
                 'area':{
                     'type':'array[string]',
                     'description':'The area to adjust the fan speed for.',
-                    'enum': ["driver-right",'passenger-left','rear-right','rear-left'],
+                    'enum': ["driver",'passenger','rear-right','rear-left'],
                     'default': 'all'
                 }
             },
@@ -87,7 +87,7 @@ functions = [
             "properties": {
                 "area": {
                     "type": "array[string]",
-                    "enum": ["driver-right",'passenger-left','rear-right','rear-left'],
+                    "enum": ["driver",'passenger','rear-right','rear-left'],
                     "description": "The zone where the temperature will be adjusted.",
                     "default": "all"
                 },
@@ -177,7 +177,8 @@ functions = [
             },
             "required": [
                 "speed"
-            ]
+            ],
+            "optional": []
         }
     },
     {
@@ -221,7 +222,8 @@ functions = [
             },
             "optional": [
                 "method"
-            ]
+            ],
+            "required": []
         }
     },
     {
@@ -239,7 +241,8 @@ functions = [
             },
             "required": [
                 "lock_state"
-            ]
+            ],
+            "optional": []
         }
     },
     {
@@ -342,7 +345,8 @@ functions = [
             },
             "required": [
                 "speed"
-            ]
+            ],
+            "optional": []
         }
     },
     {
@@ -359,7 +363,8 @@ functions = [
             },
             "optional": [
                 "include_history"
-            ]
+            ],
+            "required": []
         }
     },
     {
@@ -376,7 +381,8 @@ functions = [
             },
             "required": [
                 "action"
-            ]
+            ],
+            "optional": []
         }
     }
 ]

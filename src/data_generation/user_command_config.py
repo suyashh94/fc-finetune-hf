@@ -30,91 +30,87 @@ class SampleCorrectnessJudgement(BaseModel):
     reason: str = Field(..., description="Reason for the judgement.")
 
 complete_command_gen_prompt = [
-                 (
-            "system",
-            "You are a helpful AI assistant that generates natural-sounding user commands \
-            for a voice-enabled car assistant. Your task is to create a single, natural language \
-            command that a user might say, which would cause the car assistant to execute the given\
-            function call with the specified parameters."
-        ),
-        (
-            "human",
-            "Please generate a 5 diverse user commands in natural language that would cause the\
-                car assistant to execute the following function call: <FUNCTION_CALL>"
-        ),
-        (
-            "human",
-            "Ensure that the commands is phrased naturally, as a user would \
-                speak it in conversation with the car assistant."
-        ),
-        (
-            "human",
-            "The commands should correctly mention the parameter values \
-            as specified in the function call,but should rephrase it, and you should use \
-            synonyms or natural language expressions for the parameter names.\
-                You have to use different ways to phrase the command."
-        ),
-        (
-            "human",
-            "Here are some examples:"
-        ),
-        (
-            "human",
-            "1. If the function call is `set_temperature(temperature=35, zone=['driver-right'])`, \
-                the command might be 'Set the temperature to 35 degrees on my side' or \
-                    'Increase my side's temperature to 35 degrees', ensuring that '35' \
-                        and the appropriate zone are mentioned."
-        ),
-        (
-            "human",
-            "2. If the function call is `adjust_fan_speed(area=['rear-left', 'rear-right'])`, \
-                the command could be 'Increase the fan speed in the back seats' or \
-                    'Turn up the air flow for the rear passengers', using synonyms for \
-                        'area' and correctly referring to the specified areas."
-        ),
-        (
-            "human",
-            "3. For `control_window(window_position='close', window_location='passenger')`, a \
-                possible command is 'Please close the passenger side window' or 'Shut the window \
-                    on the passenger side', mentioning the position 'close' and the 'passenger' location."
-        ),
-        (
-            "human",
-            "4. Given `adjust_seat(position='decline', seat_type='rear_right')`, the command might be 'Recline the rear right seat' or 'Lay back the seat behind the front passenger', ensuring the position 'decline' and the correct seat are referenced."
-        ),
-        (
-            "human",
-            "5. If the function call is `activate_defroster(duration_minutes=20, defroster_zone='all')`, the command could be 'Turn on the defroster for 20 minutes everywhere' or 'Please defrost all windows for 20 minutes', including the duration and zone."
-        ),
-        (
-            "human",
-            "6. For `set_cruise_control(speed=47)`, a natural command is 'Set cruise control to 47 miles per hour' or 'Cruise at 47 mph', mentioning the speed value."
-        ),
-        (
-            "human",
-            "7. Given `toggle_headlights(state='on')`, the command might be 'Turn on the headlights' or 'Switch the headlights on', indicating the state 'on'."
-        ),
-        (
-            "human",
-            "8. For `play_music(volume=5, track='Imagine')`, you could say 'Play the song \"Imagine\" at volume level 5' or 'Turn up the music to level 5 and play \"Imagine\"', specifying both the volume and track."
-        ),
-        (
-            "human",
-            "9. If the function call is `set_wiper_speed(speed='HIGH')`, the command might be 'Set the windshield wipers to high speed' or 'Turn the wipers up to high', mentioning the speed setting."
-        ),
-        (
-            "human",
-            "10. For `lock_doors(lock='lock')`, a natural command is 'Unlock the doors' or 'Open all the car doors', indicating the action to unlock."
-        ),
-        (
-            "human",
-            "Do not include any technical terms, code, or mention of the function call in your response.Make sure that command is accurate as per the function call. Be creative and think of many different ways a user might phrase the command.Users can be polite or rude, so consider different tones and styles of speech."
-        ),
-        (
-            "human",
-            "Output only the user commands and nothing else."
-        ),
-        ("human", "<FUNCTION_CALL> is {function_call} "),
+                ("system", "You are a helpful AI assistant that generates natural-sounding user commands for a voice-enabled car assistant."),
+(
+    "human",
+    "Your task is to create a set of natural language commands that a user might say to a car assistant, \
+    which would cause it to execute the given function call with the specified parameters."
+),
+(
+    "human",
+    "Please generate 5 diverse user commands in natural language that correctly correspond to \
+    the specified function call: <FUNCTION_CALL>."
+),
+(
+    "human",
+    "Ensure the commands are phrased naturally and conversationally, as a user would speak to a car assistant. \
+    Use different ways to phrase the command, including variations in tone, style, and word choice."
+),
+(
+    "human",
+    "Each command should correctly reflect the parameter values specified in the function call but rephrase \
+    the parameter names using synonyms or everyday language. Avoid technical terms or direct references to \
+    the function call, ensuring the commands feel intuitive and user-friendly."
+),
+(
+    "human",
+    "Here are examples to help you understand how to phrase the commands:"
+),
+(
+    "human",
+    "1. For `set_temperature(temperature=35, zone=['driver'])`, commands might include: \
+        'Set the temperature to 35 degrees on my side,' 'Make my side warmer to 35 degrees,' or \
+        'Turn up the heat to 35 degrees on the driver’s side.'"
+),
+(
+    "human",
+    "2. For `adjust_fan_speed(area=['rear-left', 'rear-right'])`, commands could include: \
+        'Increase the fan speed in the back seats,' 'Turn up the air flow for rear passengers,' or \
+        'Make the fans stronger for the back row.'"
+),
+(
+    "human",
+    "3. For `control_window(window_position='close', window_location='passenger')`, commands might be: \
+        'Please close the passenger window,' 'Shut the window on the passenger side,' or \
+        'Bring the passenger-side window up.'"
+),
+(
+    "human",
+    "4. For `activate_defroster(duration_minutes=20, defroster_zone='all')`, commands could be: \
+        'Turn on the defroster for 20 minutes everywhere,' 'Please defrost all the windows for 20 minutes,' or \
+        'Run the defroster on all windows for 20 minutes.'"
+),
+(
+    "human",
+    "5. For `set_wiper_speed(speed='HIGH')`, commands might include: \
+        'Set the windshield wipers to high speed,' 'Turn the wipers to their fastest setting,' or \
+        'Make the wipers go faster at high speed.'"
+),
+(
+    "human",
+    "6. For `lock_doors(lock='lock')`, commands could include: \
+        'Lock all the doors,' 'Secure the car doors,' or 'Make sure the car is locked.'"
+),
+(
+    "human",
+    "7. For `play_music(volume=5, track='Imagine')`, commands might be: \
+        'Play \"Imagine\" at volume 5,' 'Turn up the music to level 5 and play \"Imagine,\"' or \
+        'Start playing \"Imagine\" with the sound at 5.'"
+),
+(
+    "human",
+    "Remember to be creative and consider different ways users might phrase the same request, \
+    including polite, casual, or even commanding tones. Avoid including any technical terms, code, \
+    or mention of the function call in the output."
+),
+(
+    "human",
+    "Output only the user commands as a list of 5 diverse, natural-sounding sentences, and nothing else."
+),
+(
+    "human",
+    "<FUNCTION_CALL> is {function_call}"
+)
 
             ]
 

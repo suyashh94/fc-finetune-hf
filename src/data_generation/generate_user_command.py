@@ -116,17 +116,21 @@ class CommandGenerator:
         
         for command in all_commands:
             self.check_rate_limit()  # Enforce global rate limit per command
-            res = incomplete_chain.invoke(
-                {
-                    "function_call": function_call,
-                    "command": command
-                }
-            )
-            incomplete_command = res.incomplete_command
-            modified_incorrect_function_call = res.modified_incorrect_function_call
-            print(f"Complete command: {command} for function call: {function_call}")
-            print(f"Incomplete command: {incomplete_command} with modified incorrect function call: {modified_incorrect_function_call}")
-            all_incomplete_commands.append({"incomplete_command": incomplete_command, "modified_incorrect_function_call": modified_incorrect_function_call})
+            try:
+                res = incomplete_chain.invoke(
+                    {
+                        "function_call": function_call,
+                        "command": command
+                    }
+                )
+                incomplete_command = res.incomplete_command
+                modified_incorrect_function_call = res.modified_incorrect_function_call
+                print(f"Complete command: {command} for function call: {function_call}")
+                print(f"Incomplete command: {incomplete_command} with modified incorrect function call: {modified_incorrect_function_call}")
+                all_incomplete_commands.append({"incomplete_command": incomplete_command, "modified_incorrect_function_call": modified_incorrect_function_call})
+            except Exception as e:
+                print(f"Error in generating incomplete command: {e}")
+                all_incomplete_commands.append({"incomplete_command": "", "modified_incorrect_function_call": ""})
             
         return all_commands, all_incomplete_commands
 

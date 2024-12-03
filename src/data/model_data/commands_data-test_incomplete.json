@@ -1,0 +1,1402 @@
+[
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake it warmer for the passengers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you make it warmer?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nReduce.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake it cooler.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDeactivate.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn on<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake sure the sport mode.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake sure the car doors are.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake sure the window.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like to have sport mode.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch mode.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you make the wipers go?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the fan blow less.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'decrease'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI need you to unlock.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you activate?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you switch?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the seat more inclined, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'incline'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nNavigate.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nBump up the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nIncrease the speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the cruise speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you direct us?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake my seat<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nIncrease the speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI want to go.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSlow down the wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you adjust the wiper speed?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the inside temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn off<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the ambient lights to a dark color.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'dark'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLock, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen the window, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'open'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn on cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease bump up the heat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease adjust my seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTilt my seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the fans blow stronger.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn on.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn down.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nGo ahead and unlock.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nChange the interior lights.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease turn on.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'light_state': 'on'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMove the seat backwards.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you roll down?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLock in the speed with cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you make the ambient lights red?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'red'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nShift the seat backward.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'backward'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch the wiper speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease change the speed of the windshield wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLock the doors.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut the fan on high.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_fan_speed\", \"arguments\": \"{'speed': 'HIGH'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn up the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nWould you mind?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like the window.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease make sure all the doors are<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you change the fan speed?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease put the car.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease open up.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI need the headlights off.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you adjust the climate?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI want to go, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake it degrees in here.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like to cruise, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch the inside lights.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut the wipers on a speed setting.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake it degrees in here.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDirect me.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you lower?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you recline the seat?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'incline'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you reduce?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nReduce the speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn on, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you lock?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you disable?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease activate.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCrank the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you make the air blow harder?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nChange the ambient lights to white.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'white'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nIncline the seat for me, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'incline'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the wipers<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the fan to medium speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_fan_speed\", \"arguments\": \"{'speed': 'MEDIUM'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLet some fresh air in.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn up the<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the air.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease, shut off.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the fan to medium.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_fan_speed\", \"arguments\": \"{'speed': 'MEDIUM'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch the interior lights to dark.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'dark'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the heat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the interior lights to a red color.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'red'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the car's temperature for all seats.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_temperature\", \"arguments\": \"{'area': ['rear-right', 'driver', 'rear-left', 'passenger']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust my seat, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen up the car.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nIncrease the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you shut?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you shut?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nUnlock, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLower the speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the headlights please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDecrease the heat for the back row passengers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'decrease'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nChange the ambient lights.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLet's head over.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you make the wipers go?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like to have the doors<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you shut the window?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'close'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake it warmer.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTilt my seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nEnable the option.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you adjust the temperature?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nIncrease the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch the ambient lighting.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn on.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'light_state': 'on'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen up.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake it cooler.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake it 26 degrees.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_temperature\", \"arguments\": \"{'temperature': 26}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch on.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the fans blow.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nChange the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease switch off.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'light_state': 'off'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the fans to a medium setting.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_fan_speed\", \"arguments\": \"{'speed': 'MEDIUM'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake it 68 degrees on the passenger side.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_temperature\", \"arguments\": \"{'temperature': 68, 'area': ['passenger']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn off, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch the cabin lighting to blue.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you slow down the wipers?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch the lights, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn down the fan for the passenger area.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'decrease', 'area': ['passenger']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the fans go.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the car's mood lighting.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nGive the seat a lift.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_seat\", \"arguments\": \"{'position': 'up'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you increase the temperature, please?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDeactivate the mode, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the wipers run.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nChange the ambient lighting.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn on.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'light_state': 'on'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDecrease the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn off.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLower the fan.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you adjust the fans?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like the interior lighting.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI need the car doors.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDecrease the temperature for the passengers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'decrease'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the wipers go faster.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI want blue lights in the car.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake sure the doors are.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you unlock?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI need the seat to move.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you open the window?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'open'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the interior lighting to warm.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'warm'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the destination.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn down the fan speed for the passenger seats.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'decrease', 'area': ['passenger']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the cabin lights.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you set the cruise control for me?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like the rear left window.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_location': 'rear_left'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease shut off the car's<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake my seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nClose the window.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'close'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the wiper speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen the window, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'open'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen the window.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'open'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDeactivate the sport mode.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the windshield wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the fan speed to medium.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_fan_speed\", \"arguments\": \"{'speed': 'MEDIUM'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nReduce the fan setting.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut in sport mode.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nShut off, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like you to close.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn down the speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nIncrease the heat for all passengers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'increase', 'area': ['rear-left', 'rear-right', 'passenger']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the ambient lighting red.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'red'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen the window, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'open'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the windshield wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nChange the climate control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the mood lighting to a warm color.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'warm'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you switch off?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you lower the fan speed?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the destination.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn up the wiper.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn up the fans.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the wipers go slower.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI need the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn down the fans.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like the window.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nActivate sport mode.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you adjust the cruise speed?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut the fan on, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the ambient lighting to dark.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'dark'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the air flow.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the windshield wipers down.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nNavigate.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease deactivate.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn on the cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the windshield wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nNavigate for me<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDecrease the air flow.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'decrease'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn down the temperature in the back seats.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_temperature\", \"arguments\": \"{'action': 'decrease', 'area': ['rear-left']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen the window, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'open'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen up.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the route.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the inside lights blue.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_ambient_lighting\", \"arguments\": \"{'color': 'blue'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch on mode<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut down the window.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'open'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the air flow to medium.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_fan_speed\", \"arguments\": \"{'speed': 'MEDIUM'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI'd like to enable<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the airflow.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nOpen, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn up the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nNavigate.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn off.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nIncrease the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nWarm up the driver's seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_temperature\", \"arguments\": \"{'area': ['driver']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut the fans on.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease shut.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_window\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nReduce the speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you enable?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nReduce the heat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease close the window.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'close'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch off<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSwitch the wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDirect me.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nShut off the car lights.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nReduce the air circulation.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'decrease'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nUnlock, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLower the window on the right side.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"control_window\", \"arguments\": \"{'window_position': 'open'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMove my seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn off.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_headlights\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you disable?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the air conditioner.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nIncrease the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the fans slower for the rear right seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'decrease', 'area': ['rear-right']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the seat<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCrank up the wipers.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the cruise speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut the fan on, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease adjust the cruise control speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the temperature for the driver and back seat areas.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_temperature\", \"arguments\": \"{'area': ['rear-right', 'rear-left', 'driver']}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn the fan up to high.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_fan_speed\", \"arguments\": \"{'speed': 'HIGH'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you change the interior lights?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease set my speed with cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease unlock.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the fan speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_fan_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease cruise at a speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the temperature, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nLower the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the seat.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_seat\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTake me to.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_navigation_destination\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPut the fan on high.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"set_fan_speed\", \"arguments\": \"{'speed': 'HIGH'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn up the speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDrop the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you put the car in mode?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_toggle_sport_mode\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nPlease keep the car at a steady speed using cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nI need you to unlock.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_lock_doors\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nMake the wipers go.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nAdjust the interior lights.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_control_ambient_lighting\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nDrop.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCould you set it?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nTurn off, please.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"toggle_headlights\", \"arguments\": \"{'light_state': 'off'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nReduce the speed.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_adjust_wiper_speed\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the temperature.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_temperature\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you boost the fan speed?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"adjust_fan_speed\", \"arguments\": \"{'speed': 'increase'}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nSet the cruise control.<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    },
+    {
+        "system": "<|im_start|>system\nYou are a helpful assistant. You have to either provide a way to answer user's request or answer user's query.\n<|im_end|>\n",
+        "user": "<|im_start|>user\nCan you adjust the cruise control speed?<|im_end|>\n",
+        "assistant": "<|im_start|>assistant\n<functioncall> {\"name\": \"POSSIBLY_INCORRECT_set_cruise_control\", \"arguments\": \"{}\"} <|im_end|><|endoftext|>"
+    }
+]
