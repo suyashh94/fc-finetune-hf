@@ -1,0 +1,13 @@
+## Experiments
+
+EXP :: AIM :: What is the best way to generate "negative sampling" data i.e. to counter for cases where all info is not 
+present in the command and incomplete function calls are made. 
+
+- Tried to first generate partial function calls and then use gpt to come up with user command. 
+    - Failed. GPT was looking at set_temperature() and was outputing things like "Set set_temperature to 45"
+    - Did not spend a lot of time doing this and shaping prompt. This might work and it is possible 
+    that I just did not put enough effort on this front 
+- Tried to generate full function calls and complete commands, pass them to gpt to come up with missing
+ function calls and incomplete commands. 
+    - This seems to work fairly okayish. Have been able to get a sense that ~70% of negative samples created are correct 
+    
