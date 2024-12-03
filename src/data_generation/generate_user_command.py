@@ -169,6 +169,7 @@ class CommandGenerator:
         prompt = ChatPromptTemplate.from_messages(
              prompt_message
         )
+        self.llm.temperature = 0
         chain = prompt | self.llm.with_structured_output(parser)
         res = chain.invoke(
             {

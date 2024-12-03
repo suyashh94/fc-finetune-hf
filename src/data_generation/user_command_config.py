@@ -181,32 +181,50 @@ incomplete_command_gen_prompt = \
 
 incomplete_command_gen_prompt_reinforced = \
     [
-        (
-            "system",
-            "\
-            You are a helpful AI assistant that generates natural-sounding user commands for a voice-enabled car assistant. \
-            You have been givien a <CORRECT_FUNCTION_CALL> and the <COMPLETE_COMMAND> that would generate the function call. Your TASK \
-            is to carefully analyze the <CORRECT_FUNCTION_CALL> and the <COMPLETE_COMMAND> and come up with \
-            1 diverse <INCOMPLETE_COMMAND> that will be an incomplete version of the <COMPLETE_COMMAND>.\
-            You should also output the <MODIFIED_INCORRECT_FUNCTION_CALL> that would be a modified \
-            version of <CORRECT_FUNCTION_CALL> that would comply with the <INCOMPLETE_COMMAND>\
-            "
-        ),
-        (
-            "human",
-            "<INCOMPLETE_COMMAND> should not add any new information to the <CORRECT_FUNCTION_CALL> and should only remove some or all information from the <CORRECT_FUNCTION_CALL>."
-        ),
-        ("human", "Make sure that <INCOMPLETE_COMMAND> is missing some or all information about parameters from the <COMPLETE_COMMAND> such that the <MODIFIED_INCORRECT_FUNCTION_CALL> would be an incorrect function call."),
-       ("human","If <CORRECT_FUNCTION_CALL> has 1 parameter, <INCOMPLETE_COMMAND> should not have that information in it."),
-        ("human", "Analyze the <INCOMPLETE_COMMAND> and <MODIFIED_INCORRECT_FUNCTION_CALL> carefully and if <CORRECT_FUNCTION_CALL> can be constructed with <INCOMPLETE_COMMAND>, you should provide a different <INCOMPLETE_COMMAND> and <MODIFIED_INCORRECT_FUNCTION_CALL>."),
-        
-         ("human", "If the <CORRECT_FUNCTION_CALL> has no parameters in it, then the <INCOMPLETE_COMMAND> should be empty string and the <MODIFIED_INCORRECT_FUNCTION_CALL> should also be empty string."),
-        (
-            "human",
-            "<CORRECT_FUNCTION_CALL> is {function_call}"
-        ),
-        ("human", "<COMPLETE_COMMAND> is {command}"),
-        ("human","Output only the set of <INCOMPLETE_COMMAND> and corresponding <MODIFIED_INCORRECT_FUNCTION_CALL> and nothing else."),
+       ("system", "You are a helpful AI assistant that generates natural-sounding user commands for a voice-enabled car assistant."),
+        ("human", "Your task is to analyze a <CORRECT_FUNCTION_CALL> and its corresponding <COMPLETE_COMMAND>, and generate:"),
+        ("human", "1. A <INCOMPLETE_COMMAND>, which is an incomplete version of the <COMPLETE_COMMAND> that omits some or all specific parameter or value information."),
+        ("human", "2. A <MODIFIED_INCORRECT_FUNCTION_CALL>, which is a modified version of the <CORRECT_FUNCTION_CALL> that aligns with the <INCOMPLETE_COMMAND> but is inherently incorrect due to missing or incomplete parameter information."),
+        ("human", "Guidelines for generating <INCOMPLETE_COMMAND> and <MODIFIED_INCORRECT_FUNCTION_CALL>:"),
+        ("human", "1. The <INCOMPLETE_COMMAND> should remove specific details about parameters or values from the <COMPLETE_COMMAND>, making it less precise."),
+        ("human", "2. If a specific parameter is mentioned in the <COMPLETE_COMMAND>, its information (name or value) must be omitted entirely or partially in the <INCOMPLETE_COMMAND>. For example:"),
+        ("human", "   - <COMPLETE_COMMAND>: 'Please unlock all the doors.'"),
+        ("human", "   - <INCOMPLETE_COMMAND>: 'Unlock the doors.' (removes 'all')"),
+        ("human", "3. The <MODIFIED_INCORRECT_FUNCTION_CALL> should correspond to the <INCOMPLETE_COMMAND> and reflect the missing or incomplete parameter information, making it incorrect."),
+        ("human", "4. If the <CORRECT_FUNCTION_CALL> has a single parameter, the <INCOMPLETE_COMMAND> must completely omit that parameter's information."),
+        ("human", "5. If the <CORRECT_FUNCTION_CALL> has multiple parameters, the <INCOMPLETE_COMMAND> must remove information about at least one parameter while keeping the rest, ensuring the command remains incomplete."),
+        ("human", "6. If the <CORRECT_FUNCTION_CALL> has no parameters, both the <INCOMPLETE_COMMAND> and the <MODIFIED_INCORRECT_FUNCTION_CALL> must be empty strings ('')."),
+        ("human", "7. If the <INCOMPLETE_COMMAND> and <MODIFIED_INCORRECT_FUNCTION_CALL> fully reconstruct the <CORRECT_FUNCTION_CALL>, you must create a different <INCOMPLETE_COMMAND> and corresponding <MODIFIED_INCORRECT_FUNCTION_CALL>."),
+        ("human", "8. Avoid generating <INCOMPLETE_COMMAND> outputs that sound identical or almost identical to the <COMPLETE_COMMAND>. Ensure diversity by rephrasing or restructuring the incomplete commands."),
+        ("human", "9. The <INCOMPLETE_COMMAND> should remain natural-sounding while clearly missing specific parameter or value information."),
+        ("human", "Definitions:"),
+        ("human", "   - A 'parameter' is any named attribute in the function call (e.g., color, temperature, state)."),
+        ("human", "   - A 'value' is the associated value of a parameter (e.g., blue, 25, on)."),
+        ("human", "   - A '<COMPLETE_COMMAND>' is the natural language input that directly translates into the <CORRECT_FUNCTION_CALL>."),
+        ("human", "   - A '<INCOMPLETE_COMMAND>' is a partial version of the <COMPLETE_COMMAND> that omits some parameter or value information."),
+        ("human", "   - A '<MODIFIED_INCORRECT_FUNCTION_CALL>' is a version of the <CORRECT_FUNCTION_CALL> altered to match the <INCOMPLETE_COMMAND>, which is inherently incorrect due to missing or incomplete information."),
+        ("human", "Examples:"),
+        ("human", "1. <CORRECT_FUNCTION_CALL>: set_temperature(temperature=25)"),
+        ("human", "   <COMPLETE_COMMAND>: 'Set the temperature to 25 degrees.'"),
+        ("human", "   <INCOMPLETE_COMMAND>: 'Set the temperature.'"),
+        ("human", "   <MODIFIED_INCORRECT_FUNCTION_CALL>: set_temperature()"),
+        ("human", "2. <CORRECT_FUNCTION_CALL>: toggle_lights(state='on', color='blue')"),
+        ("human", "   <COMPLETE_COMMAND>: 'Turn on the blue lights.'"),
+        ("human", "   <INCOMPLETE_COMMAND>: 'Turn on the lights.'"),
+        ("human", "   <MODIFIED_INCORRECT_FUNCTION_CALL>: toggle_lights(state='on')"),
+        ("human", "3. <CORRECT_FUNCTION_CALL>: start_engine()"),
+        ("human", "   <COMPLETE_COMMAND>: 'Start the car engine.'"),
+        ("human", "   <INCOMPLETE_COMMAND>: '' (empty string)"),
+        ("human", "   <MODIFIED_INCORRECT_FUNCTION_CALL>: '' (empty string)"),
+        ("human", "4. <CORRECT_FUNCTION_CALL>: unlock_doors(all=True)"),
+        ("human", "   <COMPLETE_COMMAND>: 'Please unlock all the doors.'"),
+        ("human", "   <INCOMPLETE_COMMAND>: 'Unlock the doors.'"),
+        ("human", "   <MODIFIED_INCORRECT_FUNCTION_CALL>: unlock_doors()"),
+        ("human", "Your Output:"),
+        ("human", "Output only the <INCOMPLETE_COMMAND> and corresponding <MODIFIED_INCORRECT_FUNCTION_CALL>. Provide no explanations or additional text."),
+        ("human", "Input:"),
+        ("human", "<CORRECT_FUNCTION_CALL> is {function_call}"),
+        ("human", "<COMPLETE_COMMAND> is {command}")
         
     ]
 
