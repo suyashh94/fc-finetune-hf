@@ -141,8 +141,8 @@ class CommandGenerator:
             function_data["complete_commands"].append(complete_commands)
             function_data["incomplete_commands"].append(incomplete_commands)
             
-            if i == 1:
-                break
+            # if i == 1:
+            #     break
 
     def generate_commands_for_all_functions(self, parallel=True):
         # import pdb; pdb.set_trace()
@@ -236,7 +236,7 @@ class CommandGenerator:
         
         self.generate_commands_for_all_functions(parallel=parallel)
         
-        self.validate_negative_samples_for_all_functions(parallel=parallel)
+        # self.validate_negative_samples_for_all_functions(parallel=parallel)
         
         self.save_commands()
 
