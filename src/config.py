@@ -160,7 +160,8 @@ functions = [
             },
             "required": [
                 "speed"
-            ]
+            ],
+            "optional": []
         }
     },
     {
@@ -300,7 +301,8 @@ functions = [
             },
             "required": [
                 "destination"
-            ]
+            ],
+            "optional": []
         }
     },
     {

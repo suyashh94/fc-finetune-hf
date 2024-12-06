@@ -1,6 +1,9 @@
 import os
 import json
 import argparse
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 from utils import convert_command
 from config import ErrorType, functions
 
@@ -30,6 +33,7 @@ class Evaluator:
         """Processes a single output."""
         gt = output['assistant']
         pred = output['model_response']
+        user_command = output['user']
 
         gt_fn_call = convert_command(gt)
         pred_fn_call = convert_command(pred)
@@ -42,7 +46,7 @@ class Evaluator:
             self.eval_result.setdefault('pred_defunctioning_error', []).append(pred)
             return
 
-        sample_res = {'gt': gt, 'pred': pred}
+        sample_res = {'gt': gt, 'pred': pred, 'user_command': user_command}
         gt_fn = gt_fn_call['fn_name']
         self.eval_result.setdefault(gt_fn, {'total': 0, 'correct': 0})
         self.eval_result[gt_fn]['total'] += 1
@@ -54,8 +58,15 @@ class Evaluator:
             if arg_match:
                 self.eval_result[gt_fn]['correct'] += 1
         else:
-            sample_res['fn_match'] = False
-            self.append_function_error(sample_res, gt_fn_call['fn_name'], pred_fn_call['fn_name'])
+            if 'possibly_incorrect' in gt_fn_call['fn_name'].lower() and 'possibly_incorrect' in pred_fn_call['fn_name'].lower():
+                sample_res['fn_match'] = True
+                arg_match = self.compare_properties(gt_fn, gt_fn_call['properties'], pred_fn_call['properties'], sample_res)
+                sample_res['arg_match'] = arg_match
+                if arg_match:
+                    self.eval_result[gt_fn]['correct'] += 1
+            else:
+                sample_res['fn_match'] = False
+                self.append_function_error(sample_res, gt_fn_call['fn_name'], pred_fn_call['fn_name'])
 
         self.eval_result[gt_fn].setdefault('samples', []).append(sample_res)
 

@@ -94,7 +94,7 @@ else:
     
     # import pdb; pdb.set_trace()
     
-    fname = './data/predicted_outputs.json'
+    fname = '../data/predicted_outputs_incomplete_train.json'
     with open(fname, "w") as f:
         json.dump(eval_data[:n+2], f)
         

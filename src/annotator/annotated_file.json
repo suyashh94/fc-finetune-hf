@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Alice",
+        "age": 25,
+        "is_female": true,
+        "is_commando": true
+    },
+    {
+        "name": "Bob",
+        "age": 30,
+        "is_female": false,
+        "is_commando": false
+    }
+]
