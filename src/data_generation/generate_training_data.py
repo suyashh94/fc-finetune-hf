@@ -94,7 +94,7 @@ def extract_function_name_and_parameters(function_call):
     }
 
     
-def generate_function_call_message(functions: list,data_file = None) -> list:
+def generate_function_call_message(functions: list,data_file = None, include_incomplete = False) -> list:
     
     # message initialization
     complete_messages = []
@@ -150,35 +150,36 @@ def generate_function_call_message(functions: list,data_file = None) -> list:
         if len(required) == 0:
             continue
         
-        incomplete_commands = data[fn]['incomplete_commands']
-        for i in range(len(incomplete_commands)):
-            for j in range(len(incomplete_commands[i])):
-                
-                if len(incomplete_commands[i][j]['incomplete_command']) == 0:
-                    continue
-                
-                user_message = "<|im_start|>user\n"
-                user_command_temp = incomplete_commands[i][j]['incomplete_command']
-                user_message += user_command_temp
-                user_message += "<|im_end|>\n"
-                
-                fn_call_temp = incomplete_commands[i][j]['modified_incorrect_function_call']
-                fn_args_temp = extract_function_name_and_parameters(fn_call_temp)
-                
-                
-                
-                ## Check if no args are present and if so, add POSSIBILY_INCORRECT to function name
-                try:
-                    if len(fn_args_temp['parameters']) == 0:
-                        fn_args_temp['function_name'] = "POSSIBLY_INCORRECT_" + fn_args_temp['function_name']
-                        print(f"Possibly incorrect example: {incomplete_commands[i][j]['incomplete_command']} \n , fn_args : {fn_args_temp}" )
-                except:
-                    print(f"Error in extracting function name and parameters for {fn_call_temp}")
-                    continue
-                
-                assistant_message = f'<|im_start|>assistant\n<functioncall> {{"name": "{fn_args_temp["function_name"]}", "arguments": "{fn_args_temp["parameters"]}"}} <|im_end|><|endoftext|>'
-                scenario_message = {'system': system_message, 'user': user_message, 'assistant': assistant_message}
-                incomplete_messages.append(scenario_message)
+        if include_incomplete:
+            incomplete_commands = data[fn]['incomplete_commands']
+            for i in range(len(incomplete_commands)):
+                for j in range(len(incomplete_commands[i])):
+                    
+                    if len(incomplete_commands[i][j]['incomplete_command']) == 0:
+                        continue
+                    
+                    user_message = "<|im_start|>user\n"
+                    user_command_temp = incomplete_commands[i][j]['incomplete_command']
+                    user_message += user_command_temp
+                    user_message += "<|im_end|>\n"
+                    
+                    fn_call_temp = incomplete_commands[i][j]['modified_incorrect_function_call']
+                    fn_args_temp = extract_function_name_and_parameters(fn_call_temp)
+                    
+                    
+                    
+                    ## Check if no args are present and if so, add POSSIBILY_INCORRECT to function name
+                    try:
+                        if len(fn_args_temp['parameters']) == 0:
+                            fn_args_temp['function_name'] = "POSSIBLY_INCORRECT_" + fn_args_temp['function_name']
+                            print(f"Possibly incorrect example: {incomplete_commands[i][j]['incomplete_command']} \n , fn_args : {fn_args_temp}" )
+                    except:
+                        print(f"Error in extracting function name and parameters for {fn_call_temp}")
+                        continue
+                    
+                    assistant_message = f'<|im_start|>assistant\n<functioncall> {{"name": "{fn_args_temp["function_name"]}", "arguments": "{fn_args_temp["parameters"]}"}} <|im_end|><|endoftext|>'
+                    scenario_message = {'system': system_message, 'user': user_message, 'assistant': assistant_message}
+                    incomplete_messages.append(scenario_message)
                 
                             
     return complete_messages, incomplete_messages
@@ -221,6 +222,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generate training data for function calling')
     parser.add_argument('--output_file', type=str, default='car_finetuning_gpt', help='Output file path')
     parser.add_argument('--data_file', type=str, default='./data/function_calls_with_commands.json', help='Data file path')
+    parser.add_argument('--include_incomplete', type=bool, default=False, help='Include incomplete function calls')
     
     args = parser.parse_args()
     
@@ -228,7 +230,7 @@ if __name__ == "__main__":
     
     # import pdb; pdb.set_trace()
     
-    complete_messages, incomplete_messages = generate_function_call_message(functions, data_file=args.data_file)
+    complete_messages, incomplete_messages = generate_function_call_message(functions, data_file=args.data_file, include_incomplete=args.include_incomplete)
     random.shuffle(complete_messages)
     random.shuffle(incomplete_messages)
     

@@ -117,7 +117,7 @@ functions = [
                 "position": {
                     "type": "string",
                     "description": "The desired position of the seat (e.g., 'forward', 'backward', 'up', 'down').",
-                    "enum": ["forward", "backward", "up", "down","incline","decline"]
+                    "enum": ["forward", "backward", "up", "down","tilt-forward","tilt-backward"],
                 },
             },
             "required": ["position"],

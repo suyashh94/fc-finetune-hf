@@ -91,6 +91,62 @@ set_cruise_control:
 toggle_sport_mode:
  - seems to be working fine
 
+December 16, 2024 
+set_temperature:
+ - *"In the front"* is understood by the model
+ - * Units* are correctly picked by the model right now 
+ - seems to be working fine
+
+adjust_temperature:
+ - * "In the front" is understood 
+ - seems to be working fine
+
+set_fan_speed:
+ - seems to be working fine 
+
+- adjust_fan_speed: 
+ - seems to be working fine
+
+control_window
+ - seems to be working fine
+
+adjust_wiper_speed
+ - seems to be working just fine 
+
+set_wiper_speed: 
+ - seems to working fine
+
+activate_defroster:
+ - not that good, 6 training samples in total, lel! 
+
+start_engine: 
+ - seems to be working fine 
+
+lock_doors:
+ - seems to be working fine 
+
+play_music: 
+ - mostly good 
+ - need to augment data for "music titles" for better training i.e. right if title name 
+ is more the 3 words, track recorded is upto 3 words
+ - volume parameter is correctly ided 
+
+toggle_headlights: 
+ - seems to be working fine 
+
+set_navigation_destination:
+ - seems to be working fine, need to replace |string| with actual place names, argument has been overfitted
+
+control_ambient_lighting:
+ - seems to be working fine 
+
+set_cruise_control: 
+ - seems to be working fine
+
+toggle_sport_mode:
+ - seems to be working fine
+
+
 
 
 

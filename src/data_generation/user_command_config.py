@@ -48,7 +48,7 @@ complete_command_gen_prompt = [
 ),
 (
     "human",
-    "Each command should correctly reflect the parameter values specified in the function call but rephrase \
+    "Each command should correctly reflect ALL the parameter values specified in the function call but rephrase \
     the parameter names using synonyms or everyday language. Avoid technical terms or direct references to \
     the function call, ensuring the commands feel intuitive and user-friendly."
 ),
@@ -60,7 +60,11 @@ complete_command_gen_prompt = [
     "human",
     "1. For `set_temperature(temperature=35, zone=['driver'])`, commands might include: \
         'Set the temperature to 35 degrees on my side,' 'Make my side warmer to 35 degrees,' or \
-        'Turn up the heat to 35 degrees on the driver’s side.'"
+        'Turn up the heat to 35 degrees on the driver’s side.'\
+        For `set_temperature(temperature=35, zone=['driver','front-passenger'])`, commands might include: \
+            'Set the temperature to 35 degrees in the front,' 'Make it 35 degrees for driver and front passenger,' or \
+            'Turn up the heat to 35 degrees in the front seats.'"
+        
 ),
 (
     "human",
@@ -183,7 +187,7 @@ incomplete_command_gen_prompt_reinforced = \
 ("human", "2. A <MODIFIED_INCORRECT_FUNCTION_CALL>, which is a modified version of the <CORRECT_FUNCTION_CALL> that aligns with the <INCOMPLETE_COMMAND> but is inherently incorrect due to missing or incomplete parameter information."),
 ("human", "Guidelines for generating <INCOMPLETE_COMMAND> and <MODIFIED_INCORRECT_FUNCTION_CALL>:"),
 ("human", "1. The <INCOMPLETE_COMMAND> must preserve the specificity of the <COMPLETE_COMMAND>. Generalizing or replacing specific terms (e.g., 'headlights' to 'lights') is NOT allowed."),
-("human", "2. The <INCOMPLETE_COMMAND> should only omit specific details about parameters or values from the <COMPLETE_COMMAND>, making it less precise but still logically correct."),
+("human", "2. The <INCOMPLETE_COMMAND> should only omit specific details about parameters or values from the <COMPLETE_COMMAND>, making it less precise and may be even logically incorrect."),
 ("human", "3. If a parameter or value is missing from the <INCOMPLETE_COMMAND>, the <MODIFIED_INCORRECT_FUNCTION_CALL> MUST NOT include it unless it is explicitly mentioned or can be logically inferred."),
 ("human", "4. If the <CORRECT_FUNCTION_CALL> has one parameter, the <INCOMPLETE_COMMAND> must remove the information about that parameter entirely."),
 ("human", "5. If the <CORRECT_FUNCTION_CALL> has multiple parameters, the <INCOMPLETE_COMMAND> must remove information about at least one parameter while keeping the rest, ensuring the command remains incomplete."),

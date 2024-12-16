@@ -49,11 +49,10 @@ class CommandGenerator:
 
     def initialize_llm(self):
         """Initializes the AzureChatOpenAI LLM client."""
+        # import pdb; pdb.set_trace()
         self.llm = AzureChatOpenAI(
-            azure_endpoint=os.getenv("AZURE_ENDPOINT"),
-            openai_api_key=os.getenv("OPENAI_API_KEY"),
-            deployment_name=os.getenv("DEPLOYMENT_NAME"),
-            openai_api_version=os.getenv("OPENAI_API_VERSION"),
+            azure_deployment=os.getenv("DEPLOYMENT_NAME"),
+            api_version=os.getenv("OPENAI_API_VERSION"),
             temperature=0.9,
             max_tokens=None,
             timeout=None,
@@ -77,7 +76,7 @@ class CommandGenerator:
                 print(f"Generated {self.global_request_count} commands. Pausing for {self.sleep_interval} seconds...")
                 time.sleep(self.sleep_interval)
 
-    def generate_command(self, function_call):
+    def generate_command(self, function_call, generate_incomplete=False):
         """Generates user commands for a given function call."""
         
         fn_name = function_call.split('(')[0]
@@ -106,55 +105,56 @@ class CommandGenerator:
         all_commands = res.commands
         all_incomplete_commands = []
         
-        incomplete_prompt_message = incomplete_command_gen_prompt_reinforced
-        incomplete_parser = IncompleteCommandOutput
-        incomplete_prompt = ChatPromptTemplate.from_messages(
-                incomplete_prompt_message
-            )
-        
-        incomplete_chain = incomplete_prompt | self.llm.with_structured_output(incomplete_parser)
-        
-        for command in all_commands:
-            self.check_rate_limit()  # Enforce global rate limit per command
-            try:
-                res = incomplete_chain.invoke(
-                    {
-                        "function_call": function_call,
-                        "command": command
-                    }
+        if generate_incomplete:
+            incomplete_prompt_message = incomplete_command_gen_prompt_reinforced
+            incomplete_parser = IncompleteCommandOutput
+            incomplete_prompt = ChatPromptTemplate.from_messages(
+                    incomplete_prompt_message
                 )
-                incomplete_command = res.incomplete_command
-                modified_incorrect_function_call = res.modified_incorrect_function_call
-                print(f"Complete command: {command} for function call: {function_call}")
-                print(f"Incomplete command: {incomplete_command} with modified incorrect function call: {modified_incorrect_function_call}")
-                all_incomplete_commands.append({"incomplete_command": incomplete_command, "modified_incorrect_function_call": modified_incorrect_function_call})
-            except Exception as e:
-                print(f"Error in generating incomplete command: {e}")
-                all_incomplete_commands.append({"incomplete_command": "", "modified_incorrect_function_call": ""})
+            
+            incomplete_chain = incomplete_prompt | self.llm.with_structured_output(incomplete_parser)
+            
+            for command in all_commands:
+                self.check_rate_limit()  # Enforce global rate limit per command
+                try:
+                    res = incomplete_chain.invoke(
+                        {
+                            "function_call": function_call,
+                            "command": command
+                        }
+                    )
+                    incomplete_command = res.incomplete_command
+                    modified_incorrect_function_call = res.modified_incorrect_function_call
+                    print(f"Complete command: {command} for function call: {function_call}")
+                    print(f"Incomplete command: {incomplete_command} with modified incorrect function call: {modified_incorrect_function_call}")
+                    all_incomplete_commands.append({"incomplete_command": incomplete_command, "modified_incorrect_function_call": modified_incorrect_function_call})
+                except Exception as e:
+                    print(f"Error in generating incomplete command: {e}")
+                    all_incomplete_commands.append({"incomplete_command": "", "modified_incorrect_function_call": ""})
             
         return all_commands, all_incomplete_commands
 
-    def generate_commands_for_function(self, function_name):
+    def generate_commands_for_function(self, function_name, generate_incomplete=False):
         """Generates commands for all calls of a single function."""
         function_data = self.data[function_name]
         function_data["complete_commands"] = []  # Initialize the user_commands key
         function_data["incomplete_commands"] = []  # Initialize the user_commands key
 
         for i,call in enumerate(function_data["calls"]):
-            complete_commands, incomplete_commands = self.generate_command(call)
+            complete_commands, incomplete_commands = self.generate_command(call, generate_incomplete=generate_incomplete)
             function_data["complete_commands"].append(complete_commands)
             function_data["incomplete_commands"].append(incomplete_commands)
             
             # if i == 1:
             #     break
 
-    def generate_commands_for_all_functions(self, parallel=True):
+    def generate_commands_for_all_functions(self, parallel=True, generate_incomplete=False):
         # import pdb; pdb.set_trace()
         """Generates commands for all functions using multithreading."""
         if parallel:
             with ThreadPoolExecutor(max_workers=self.max_threads) as executor:
                 futures = [
-                    executor.submit(self.generate_commands_for_function, function_name)
+                    executor.submit(self.generate_commands_for_function, function_name, generate_incomplete)
                     for function_name in self.data.keys()
                 ]
                 for future in futures:
@@ -164,7 +164,7 @@ class CommandGenerator:
                         print(f"Error in generating commands: {exc}")
         else:
             for function_name in self.data.keys():
-                self.generate_commands_for_function(function_name)
+                self.generate_commands_for_function(function_name, generate_incomplete)
 
     def is_negative_sample_correct(self, incomplete_user_command, modified_incorrect_function_call, parameters):
         
@@ -234,11 +234,11 @@ class CommandGenerator:
         with open(self.output_file, 'w') as f:
             json.dump(self.data, f, indent=4)
 
-    def run(self, parallel=True, type=CommandType.CORRECT_COMMANDS):
+    def run(self, parallel=True, generate_incomplete=False):
         """Executes the entire command generation pipeline."""
         self.load_function_calls()
         
-        self.generate_commands_for_all_functions(parallel=parallel)
+        self.generate_commands_for_all_functions(parallel=parallel, generate_incomplete=generate_incomplete)
         
         # self.validate_negative_samples_for_all_functions(parallel=parallel)
         
@@ -253,10 +253,12 @@ def main():
     parser.add_argument('--max_threads', type=int, default=4, help='Maximum number of threads for parallel processing.')
     parser.add_argument('--batch_size', type=int, default=5, help='Number of commands to generate before pausing.')
     parser.add_argument('--parallel', action='store_true', help='Enable parallel processing.')
+    parser.add_argument('--generate_incomplete', action='store_true', help='Generate incomplete commands')
     
-    
+    # import pdb; pdb.set_trace()
     
     args = parser.parse_args()
+    
 
     generator = CommandGenerator(
         input_file=args.input_file,
@@ -266,7 +268,7 @@ def main():
         max_threads=args.max_threads,
         batch_size=args.batch_size,
     )
-    generator.run(args.parallel, type=type)
+    generator.run(args.parallel, args.generate_incomplete)
 
 if __name__ == "__main__":
     start_time = time.time()
